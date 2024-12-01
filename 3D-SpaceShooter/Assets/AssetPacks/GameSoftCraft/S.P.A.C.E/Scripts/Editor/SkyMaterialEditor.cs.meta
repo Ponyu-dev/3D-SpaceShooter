@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: 8fd66424aa4da574f9532d867f80547d
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 299421
+  packageName: S.P.A.C.E - Procedural Sky
+  packageVersion: 1.0.1
+  assetPath: Assets/GameSoftCraft/S.P.A.C.E/Scripts/Editor/SkyMaterialEditor.cs
+  uploadId: 709225
