@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: e1a111402ea94b84083281eb11a90a54
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 11400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 299421
+  packageName: S.P.A.C.E - Procedural Sky
+  packageVersion: 1.0.1
+  assetPath: Assets/GameSoftCraft/S.P.A.C.E/Data/Sky Material.asset
+  uploadId: 709225
