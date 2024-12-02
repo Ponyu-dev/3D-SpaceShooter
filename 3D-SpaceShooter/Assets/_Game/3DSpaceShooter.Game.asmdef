@@ -1,0 +1,25 @@
+{
+	"name": "3DSpaceShooter.Game",
+	"rootNamespace": "",
+	"references": [
+		"Atomic.Contexts",
+		"Atomic.Elements",
+		"Atomic.Entities",
+		"Atomic.Extensions",
+		"Atomic.Entities.Stubs",
+		"Atomic.UI",
+		"Unity.Burst",
+		"Unity.Mathematics",
+		"Unity.InputSystem",
+		"NightPool"
+	],
+	"includePlatforms": [],
+	"excludePlatforms": [],
+	"allowUnsafeCode": false,
+	"overrideReferences": false,
+	"precompiledReferences": [],
+	"autoReferenced": true,
+	"defineConstraints": [],
+	"versionDefines": [],
+	"noEngineReferences": false
+}
