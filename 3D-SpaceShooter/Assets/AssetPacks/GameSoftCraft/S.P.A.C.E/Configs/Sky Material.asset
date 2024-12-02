@@ -12,17 +12,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc6de92c225c2804790254865ce71994, type: 3}
   m_Name: Sky Material
   m_EditorClassIdentifier: 
-  _seed: 3
-  _gamma: 1.141
-  _isSunOn: 1
-  _isPlanetOn: 1
+  _seed: 2
+  _gamma: 1
+  _isSunOn: 0
+  _isPlanetOn: 0
   _isDebrisOn: 1
-  _orientation: {x: -1.75, y: -0, z: -0.58}
-  _farStarDensity: 0.61
-  _farStarTwinkle: 1
-  _midStarDensity: 0.63
-  _midStarTwinkle: 1
-  _nearStarDensity: 0.63
+  _orientation: {x: 0, y: -0, z: 0}
+  _farStarDensity: 0.2
+  _farStarTwinkle: 0.5
+  _midStarDensity: 0.1
+  _midStarTwinkle: 0.2
+  _nearStarDensity: 0.1
   _nebulaColorOffset: {r: 0, g: 1, b: 0.7319727, a: 1}
   _sunSize: 1
   _sunCoronaSpeed: 0.47
