@@ -16,5 +16,36 @@ MonoBehaviour:
   namespace: Atomic.Entities
   directoryPath: Assets/_Game/Atomic/Codegen
   suffix: API
-  imports: []
-  categories: []
+  imports:
+  - Atomic.Elements
+  categories:
+  - name: Move
+    indexes:
+    - id: 1
+      name: MoveSpeed
+      type: ReactiveFloat
+    - id: 2
+      name: MoveDirection
+      type: ReactiveVector3
+    - id: 3
+      name: CanMove
+      type: AndExpression
+    - id: 4
+      name: Position
+      type: ReactiveVector3
+  - name: Rotate
+    indexes:
+    - id: 5
+      name: Rotation
+      type: ReactiveQuaternion
+    - id: 6
+      name: CanRotate
+      type: AndExpression
+  - name: Core
+    indexes:
+    - id: 7
+      name: Transform
+      type: Const<Transform>
+    - id: 8
+      name: MainCamera
+      type: Const<Camera>
