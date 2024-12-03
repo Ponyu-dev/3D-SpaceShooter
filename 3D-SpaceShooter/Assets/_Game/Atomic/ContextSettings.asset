@@ -37,3 +37,17 @@ MonoBehaviour:
     - id: 5
       name: DeltaMove
       type: ReactiveVector3
+  - Name: Player
+    Namespace: Atomic.Contexts
+    DirectoryPath: Assets/_Game/Atomic/Codegen
+    ClassSuffix: API
+    Imports:
+    - Atomic.Elements
+    - Atomic.Entities
+    items:
+    - id: 6
+      name: PlayerEntity
+      type: Const<IEntity>
+    - id: 7
+      name: PlayerTransform
+      type: Const<Transform>
