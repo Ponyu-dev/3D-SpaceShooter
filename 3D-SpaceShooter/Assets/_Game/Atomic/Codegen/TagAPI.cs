@@ -11,6 +11,7 @@ namespace Atomic.Entities
     {
         ///Keys
         public const int Player = 1;
+        public const int Asteroid = 2;
 
 
         ///Extensions
@@ -18,5 +19,10 @@ namespace Atomic.Entities
         public static bool NotPlayerTag(this IEntity obj) => !obj.HasTag(Player);
         public static bool AddPlayerTag(this IEntity obj) => obj.AddTag(Player);
         public static bool DelPlayerTag(this IEntity obj) => obj.DelTag(Player);
+
+        public static bool HasAsteroidTag(this IEntity obj) => obj.HasTag(Asteroid);
+        public static bool NotAsteroidTag(this IEntity obj) => !obj.HasTag(Asteroid);
+        public static bool AddAsteroidTag(this IEntity obj) => obj.AddTag(Asteroid);
+        public static bool DelAsteroidTag(this IEntity obj) => obj.DelTag(Asteroid);
     }
 }

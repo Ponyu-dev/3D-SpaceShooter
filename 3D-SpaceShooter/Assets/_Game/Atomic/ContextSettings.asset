@@ -51,3 +51,15 @@ MonoBehaviour:
     - id: 7
       name: PlayerTransform
       type: Const<Transform>
+  - Name: Asteroids
+    Namespace: Atomic.Contexts
+    DirectoryPath: Assets/_Game/Atomic/Codegen
+    ClassSuffix: API
+    Imports:
+    - Atomic.Elements
+    - UnityEngine.Jobs
+    - _Game.Gameplay.Asteroids.Scripts.Data
+    items:
+    - id: 8
+      name: ReactiveAsteroidsProperties
+      type: ReactiveVariable<AsteroidsProperties>
