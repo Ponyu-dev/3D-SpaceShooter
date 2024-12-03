@@ -38,9 +38,6 @@ MonoBehaviour:
     - id: 5
       name: Rotation
       type: ReactiveQuaternion
-    - id: 6
-      name: CanRotate
-      type: AndExpression
     - id: 9
       name: TiltAmount
       type: Const<float>
@@ -55,3 +52,20 @@ MonoBehaviour:
     - id: 8
       name: MainCamera
       type: Const<Camera>
+  - name: HitPoints
+    indexes:
+    - id: 11
+      name: CurrentHp
+      type: ReactiveInt
+    - id: 12
+      name: MaxHp
+      type: ReactiveInt
+    - id: 13
+      name: CanTakeDamage
+      type: AndExpression
+    - id: 14
+      name: TakeDamageEvent
+      type: BaseEvent<int>
+    - id: 15
+      name: IsDead
+      type: ReactiveBool
