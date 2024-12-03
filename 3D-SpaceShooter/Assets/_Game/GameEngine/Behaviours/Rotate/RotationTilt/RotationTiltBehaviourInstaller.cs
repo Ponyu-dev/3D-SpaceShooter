@@ -15,23 +15,16 @@ namespace _Game.GameEngine.Behaviours.Rotate.RotationTilt
     [Serializable]
     public sealed class RotationTiltBehaviourInstaller : IBehaviourInstaller
     {
-        [SerializeField] private Const<float> tiltAmount = new Const<float>(15f);
-        [SerializeField] private Const<float> tiltSmoothness = new Const<float>(5f);
-        [SerializeField] private AndExpression canRotate;
+        [SerializeField] private Const<float> tiltAmount = new(15f);
+        [SerializeField] private Const<float> tiltSmoothness = new(5f);
         
         public void Install(IEntity entity)
         {
             entity.AddRotation(new ReactiveQuaternion());
             entity.AddTiltAmount(tiltAmount);
             entity.AddTiltSmoothness(tiltSmoothness);
-            entity.AddCanRotate(canRotate);
             
             entity.AddBehaviour<RotationTiltBehaviour>();
-        }
-
-        public void CanRotateAppend(Func<bool> func)
-        {
-            canRotate.Append(func);
         }
     }
 }

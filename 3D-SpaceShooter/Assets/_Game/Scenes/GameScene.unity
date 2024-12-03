@@ -520,6 +520,11 @@ MonoBehaviour:
       value: 15
     tiltSmoothness:
       value: 8
+  hitPointsBehaviourInstaller:
+    isDead:
+      value: 0
+    maxHp:
+      value: 100
 --- !u!114 &1249048886
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -5,6 +5,7 @@
 // ------------------------------------------------------------------------------
 
 using System;
+using _Game.GameEngine.Behaviours.HitPoints;
 using _Game.GameEngine.Behaviours.Move.MovementBoundedCameraSize;
 using _Game.GameEngine.Behaviours.Rotate.RotationTilt;
 using _Game.GameEngine.Behaviours.Visual;
@@ -19,6 +20,7 @@ namespace _Game.Gameplay.Player.Scripts.Installers
     {
         [SerializeField] private MovementBoundedCameraSizeBehaviourInstaller movementBoundedCameraSizeBehaviourInstaller;
         [SerializeField] private RotationTiltBehaviourInstaller rotationTiltBehaviourInstaller;
+        [SerializeField] private HitPointsBehaviourInstaller hitPointsBehaviourInstaller;
         
         public override void Install(IEntity entity)
         {
@@ -28,10 +30,12 @@ namespace _Game.Gameplay.Player.Scripts.Installers
             
             entity.AddBehaviour<TransformBehaviour>();
             
-            movementBoundedCameraSizeBehaviourInstaller.Install(entity);
-            rotationTiltBehaviourInstaller.Install(entity);
+            hitPointsBehaviourInstaller.Install(entity);
             
-            rotationTiltBehaviourInstaller.CanRotateAppend(movementBoundedCameraSizeBehaviourInstaller.IsCaneMove());
+            movementBoundedCameraSizeBehaviourInstaller.Install(entity);
+            movementBoundedCameraSizeBehaviourInstaller.CanMoveAppend(hitPointsBehaviourInstaller.IsNotDead());
+            
+            rotationTiltBehaviourInstaller.Install(entity);
         }
     }
 }
