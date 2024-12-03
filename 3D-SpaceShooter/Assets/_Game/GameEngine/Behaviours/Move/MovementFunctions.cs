@@ -35,7 +35,9 @@ namespace _Game.GameEngine.Behaviours.Move
             out Vector3 newPosition
         )
         {
-            var pos = position + speed * deltaTime * direction; 
+            MoveStep(position, direction, speed, deltaTime,
+                out var pos);
+             
             newPosition = new Vector3(
                 Mathf.Clamp(pos.x, minBounds.x, maxBounds.x),
                 Mathf.Clamp(pos.y, minBounds.y, maxBounds.y),

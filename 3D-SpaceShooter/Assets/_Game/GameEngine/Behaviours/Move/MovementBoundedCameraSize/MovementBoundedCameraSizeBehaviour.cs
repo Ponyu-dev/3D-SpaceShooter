@@ -1,16 +1,16 @@
 // ------------------------------------------------------------------------------
 // <author>: Iurii Ponomarev (Ponyu)
 // <created>: 2024-12-02
-// <file>: MovementBoundedBehaviour.cs
+// <file>: MovementBoundedCameraSizeBehaviour.cs
 // ------------------------------------------------------------------------------
 
 using Atomic.Elements;
 using Atomic.Entities;
 using UnityEngine;
 
-namespace _Game.GameEngine.Behaviours.Move.MovementBounded
+namespace _Game.GameEngine.Behaviours.Move.MovementBoundedCameraSize
 {
-    public sealed class MovementBoundedBehaviour : IEntityInit, IEntityFixedUpdate
+    public sealed class MovementBoundedCameraSizeBehaviour : IEntityInit, IEntityFixedUpdate
     {
         private IVariable<Vector3> _position;
         private IValue<Vector3> _moveDirection;

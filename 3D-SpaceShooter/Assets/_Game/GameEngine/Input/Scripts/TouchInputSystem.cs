@@ -58,7 +58,7 @@ namespace _Game.GameEngine.Input.Scripts
             var currentTouchPosition = context.ReadValue<Vector2>();
             var delta = currentTouchPosition - _lastTouchPosition;
             _lastTouchPosition = currentTouchPosition;
-            _deltaMove.Value = new Vector3(delta.x, delta.y, 0);
+            _deltaMove.Value = new Vector3(delta.x, delta.y, 0).normalized;
         }
 
         private void TouchFinished(InputAction.CallbackContext context)

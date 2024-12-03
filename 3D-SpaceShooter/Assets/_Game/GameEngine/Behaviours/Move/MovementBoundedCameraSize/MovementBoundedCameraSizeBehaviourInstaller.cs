@@ -1,7 +1,7 @@
 // ------------------------------------------------------------------------------
 // <author>: Iurii Ponomarev (Ponyu)
 // <created>: 2024-12-02
-// <file>: MovementBoundedBehaviourInstaller.cs
+// <file>: MovementBoundedCameraSizeBehaviourInstaller.cs
 // ------------------------------------------------------------------------------
 
 using System;
@@ -10,10 +10,10 @@ using Atomic.Elements;
 using Atomic.Entities;
 using UnityEngine;
 
-namespace _Game.GameEngine.Behaviours.Move.MovementBounded
+namespace _Game.GameEngine.Behaviours.Move.MovementBoundedCameraSize
 {
     [Serializable]
-    public sealed class MovementBoundedBehaviourInstaller : IBehaviourInstaller
+    public sealed class MovementBoundedCameraSizeBehaviourInstaller : IBehaviourInstaller
     {
         [SerializeField] private Camera mainCamera;
         
@@ -26,15 +26,18 @@ namespace _Game.GameEngine.Behaviours.Move.MovementBounded
             entity.AddMoveSpeed(moveSpeed);
             entity.AddMoveDirection(initialDirection);
             entity.AddCanMove(canMove);
-
             entity.AddMainCamera(new Const<Camera>(mainCamera));
-            
-            entity.AddBehaviour<MovementBoundedBehaviour>();
+            entity.AddBehaviour<MovementBoundedCameraSizeBehaviour>();
         }
         
         public void CanMoveAppend(Func<bool> func)
         {
             canMove.Append(func);
+        }
+
+        public Func<bool> IsCaneMove()
+        {
+            return () => canMove.Value;
         }
     }
 }

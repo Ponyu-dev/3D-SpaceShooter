@@ -5,7 +5,8 @@
 // ------------------------------------------------------------------------------
 
 using System;
-using _Game.GameEngine.Behaviours.Move.MovementBounded;
+using _Game.GameEngine.Behaviours.Move.MovementBoundedCameraSize;
+using _Game.GameEngine.Behaviours.Rotate.RotationTilt;
 using _Game.GameEngine.Behaviours.Visual;
 using Atomic.Elements;
 using Atomic.Entities;
@@ -16,18 +17,21 @@ namespace _Game.Gameplay.Player.Scripts.Installers
     [Serializable]
     public sealed class PlayerEntityInstaller : SceneEntityInstallerBase
     {
-        [SerializeField] private MovementBoundedBehaviourInstaller movementBoundedBehaviourInstaller;
+        [SerializeField] private MovementBoundedCameraSizeBehaviourInstaller movementBoundedCameraSizeBehaviourInstaller;
+        [SerializeField] private RotationTiltBehaviourInstaller rotationTiltBehaviourInstaller;
         
         public override void Install(IEntity entity)
         {
             entity.AddPlayerTag();
             entity.AddTransform(new Const<Transform>(transform));
             entity.AddPosition(new ReactiveVector3(transform.position));
-            entity.AddRotation(new ReactiveQuaternion());
             
             entity.AddBehaviour<TransformBehaviour>();
             
-            movementBoundedBehaviourInstaller.Install(entity);
+            movementBoundedCameraSizeBehaviourInstaller.Install(entity);
+            rotationTiltBehaviourInstaller.Install(entity);
+            
+            rotationTiltBehaviourInstaller.CanRotateAppend(movementBoundedCameraSizeBehaviourInstaller.IsCaneMove());
         }
     }
 }

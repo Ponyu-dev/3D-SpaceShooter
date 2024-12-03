@@ -14,6 +14,8 @@ namespace Atomic.Entities
         ///Keys
         public const int Rotation = 5; // ReactiveQuaternion
         public const int CanRotate = 6; // AndExpression
+        public const int TiltAmount = 9; // Const<float>
+        public const int TiltSmoothness = 10; // Const<float>
 
 
         ///Extensions
@@ -52,5 +54,41 @@ namespace Atomic.Entities
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static void SetCanRotate(this IEntity obj, AndExpression value) => obj.SetValue(CanRotate, value);
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static Const<float> GetTiltAmount(this IEntity obj) => obj.GetValue<Const<float>>(TiltAmount);
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static bool TryGetTiltAmount(this IEntity obj, out Const<float> value) => obj.TryGetValue(TiltAmount, out value);
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static bool AddTiltAmount(this IEntity obj, Const<float> value) => obj.AddValue(TiltAmount, value);
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static bool HasTiltAmount(this IEntity obj) => obj.HasValue(TiltAmount);
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static bool DelTiltAmount(this IEntity obj) => obj.DelValue(TiltAmount);
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static void SetTiltAmount(this IEntity obj, Const<float> value) => obj.SetValue(TiltAmount, value);
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static Const<float> GetTiltSmoothness(this IEntity obj) => obj.GetValue<Const<float>>(TiltSmoothness);
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static bool TryGetTiltSmoothness(this IEntity obj, out Const<float> value) => obj.TryGetValue(TiltSmoothness, out value);
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static bool AddTiltSmoothness(this IEntity obj, Const<float> value) => obj.AddValue(TiltSmoothness, value);
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static bool HasTiltSmoothness(this IEntity obj) => obj.HasValue(TiltSmoothness);
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static bool DelTiltSmoothness(this IEntity obj) => obj.DelValue(TiltSmoothness);
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static void SetTiltSmoothness(this IEntity obj, Const<float> value) => obj.SetValue(TiltSmoothness, value);
     }
 }
