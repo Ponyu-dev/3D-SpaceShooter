@@ -15,7 +15,6 @@ namespace Atomic.Contexts
 		///Keys
 		public const int PlayerEntity = 6; // Const<IEntity>
 		public const int PlayerTransform = 7; // Const<Transform>
-		public const int PlayerBounds = 9; // Const<Bounds>
 
 
 		///Extensions
@@ -54,23 +53,5 @@ namespace Atomic.Contexts
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static bool HasPlayerTransform(this IContext obj) => obj.HasValue(PlayerTransform);
-
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static Const<Bounds> GetPlayerBounds(this IContext obj) => obj.ResolveValue<Const<Bounds>>(PlayerBounds);
-
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static bool TryGetPlayerBounds(this IContext obj, out Const<Bounds> value) => obj.TryResolveValue(PlayerBounds, out value);
-
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static bool AddPlayerBounds(this IContext obj, Const<Bounds> value) => obj.AddValue(PlayerBounds, value);
-
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static bool DelPlayerBounds(this IContext obj) => obj.DelValue(PlayerBounds);
-
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static void SetPlayerBounds(this IContext obj, Const<Bounds> value) => obj.SetValue(PlayerBounds, value);
-
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static bool HasPlayerBounds(this IContext obj) => obj.HasValue(PlayerBounds);
     }
 }

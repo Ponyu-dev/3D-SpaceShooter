@@ -17,6 +17,7 @@ namespace Atomic.Contexts
 		public const int ReactiveAsteroidsProperties = 8; // ReactiveVariable<AsteroidsProperties>
 		public const int AsteroidsContainer = 10; // Const<Transform>
 		public const int AsteroidsBounds = 11; // Const<Bounds>
+		public const int SpawnAsteroidData = 13; // Const<SpawnAsteroidData>
 
 
 		///Extensions
@@ -73,5 +74,23 @@ namespace Atomic.Contexts
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static bool HasAsteroidsBounds(this IContext obj) => obj.HasValue(AsteroidsBounds);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static Const<SpawnAsteroidData> GetSpawnAsteroidData(this IContext obj) => obj.ResolveValue<Const<SpawnAsteroidData>>(SpawnAsteroidData);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static bool TryGetSpawnAsteroidData(this IContext obj, out Const<SpawnAsteroidData> value) => obj.TryResolveValue(SpawnAsteroidData, out value);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static bool AddSpawnAsteroidData(this IContext obj, Const<SpawnAsteroidData> value) => obj.AddValue(SpawnAsteroidData, value);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static bool DelSpawnAsteroidData(this IContext obj) => obj.DelValue(SpawnAsteroidData);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static void SetSpawnAsteroidData(this IContext obj, Const<SpawnAsteroidData> value) => obj.SetValue(SpawnAsteroidData, value);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static bool HasSpawnAsteroidData(this IContext obj) => obj.HasValue(SpawnAsteroidData);
     }
 }

@@ -23,7 +23,9 @@ namespace _Game.Gameplay.Player.Scripts.Installers
         {
             ViewportFunctions.ViewportToWorldBounds(context.GetMainCamera().Value, playerPrefab.transform, out var mBounds);
             bounds = new Const<Bounds>(mBounds);
-//            SingletonGameContext.Instance.AddPlayerBounds(bounds);
+            
+            context.GetPlayerBounds().Value = bounds.Value;
+            
             playerPrefab.AddMoveBounds(bounds);
             playerPrefab.Install();
 

@@ -18,6 +18,7 @@ namespace Atomic.Contexts
 		public const int MainCamera = 3; // Const<Camera>
 		public const int IsTouching = 4; // ReactiveBool
 		public const int DeltaMove = 5; // ReactiveVector3
+		public const int PlayerBounds = 9; // ReactiveVariable<Bounds>
 
 
 		///Extensions
@@ -110,5 +111,23 @@ namespace Atomic.Contexts
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static bool HasDeltaMove(this IContext obj) => obj.HasValue(DeltaMove);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static ReactiveVariable<Bounds> GetPlayerBounds(this IContext obj) => obj.ResolveValue<ReactiveVariable<Bounds>>(PlayerBounds);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static bool TryGetPlayerBounds(this IContext obj, out ReactiveVariable<Bounds> value) => obj.TryResolveValue(PlayerBounds, out value);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static bool AddPlayerBounds(this IContext obj, ReactiveVariable<Bounds> value) => obj.AddValue(PlayerBounds, value);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static bool DelPlayerBounds(this IContext obj) => obj.DelValue(PlayerBounds);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static void SetPlayerBounds(this IContext obj, ReactiveVariable<Bounds> value) => obj.SetValue(PlayerBounds, value);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static bool HasPlayerBounds(this IContext obj) => obj.HasValue(PlayerBounds);
     }
 }

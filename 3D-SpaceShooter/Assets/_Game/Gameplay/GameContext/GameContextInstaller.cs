@@ -20,9 +20,10 @@ namespace _Game.Gameplay.GameContext
         
         public override void Install(IContext context)
         {
+            context.AddPlayerBounds(new ReactiveVariable<Bounds>());
             context.AddWorldTransform(new Const<Transform>(worldTransform));
             context.AddMainCamera(new Const<Camera>(mainCamera));
-            
+
             touchInputSystemInstaller.Install(context);
         }
     }

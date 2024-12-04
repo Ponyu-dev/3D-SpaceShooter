@@ -5,6 +5,7 @@
 // ------------------------------------------------------------------------------
 
 using _Game.GameEngine.Common.Scripts;
+using _Game.Gameplay.Asteroids.Scripts.Data;
 using Atomic.Contexts;
 using Atomic.Elements;
 using UnityEngine;
@@ -14,49 +15,35 @@ namespace _Game.Gameplay.Asteroids.Scripts.Installers
     public sealed class AsteroidsContextInstaller : SceneContextInstallerBase
     {
         [SerializeField] private Transform asteroidsContainer;
-        [SerializeField] private Const<Bounds> bounds;
-        
-        //[SerializeField] private Transform[] asteroids;
-        //[SerializeField] private ReactiveVariable<AsteroidsProperties> reactiveAsteroidsProperties;
+        [SerializeField] private SpawnAsteroidData spawnAsteroidData;
+        [SerializeField] private ReactiveVariable<AsteroidsProperties> reactiveAsteroidsProperties;
         
         public override void Install(IContext context)
         {
             context.AddAsteroidsContainer(new Const<Transform>(asteroidsContainer));
             
             ViewportFunctions.ViewportToWorldBounds(context.GetMainCamera().Value, asteroidsContainer, out var mBounds);
-            bounds = new Const<Bounds>(mBounds);
-            context.AddAsteroidsBounds(bounds);
-        }
-        
-        /*var asteroidData = new NativeArray<AsteroidData>(asteroids.Length, Allocator.Persistent);
-            var transformAccessArray = new TransformAccessArray(asteroids);
+            spawnAsteroidData.spawnArea = mBounds;
 
-            for (var i = 0; i < asteroids.Length; i++)
-            {
-                asteroidData[i] = new AsteroidData
-                (
-                    new Vector3(Random.value, Random.value, Random.value).normalized,
-                    Random.Range(10f, 50f)
-                );
-            }
-            reactiveAsteroidsProperties = new ReactiveVariable<AsteroidsProperties>(new AsteroidsProperties(asteroidData, transformAccessArray));
-
+            reactiveAsteroidsProperties = new ReactiveVariable<AsteroidsProperties>(new AsteroidsProperties(1));
             context.AddReactiveAsteroidsProperties(reactiveAsteroidsProperties);
-            context.AddSystem<AsteroidsRotationSystem>();*/
+            context.AddSpawnAsteroidData(new Const<SpawnAsteroidData>(spawnAsteroidData));
+            context.AddSystem<AsteroidsSpawnerSystem>();
+            context.AddSystem<AsteroidsRotationSystem>();
+        }
 
         private void OnDestroy()
         {
-            //reactiveAsteroidsProperties.Value.Dispose();
+            reactiveAsteroidsProperties.Value.Dispose();
         }
         
-        
-
         private void OnDrawGizmos()
         {
-            var rectBottomLeft = bounds.Value.min;
-            var rectBottomRight = new Vector3(bounds.Value.max.x, bounds.Value.min.y, bounds.Value.min.z);
-            var rectTopLeft = new Vector3(bounds.Value.min.x, bounds.Value.max.y, bounds.Value.min.z);
-            var rectTopRight = bounds.Value.max;
+            var bounds = spawnAsteroidData.spawnArea;
+            var rectBottomLeft = bounds.min;
+            var rectBottomRight = new Vector3(bounds.max.x, bounds.min.y, bounds.min.z);
+            var rectTopLeft = new Vector3(bounds.min.x, bounds.max.y, bounds.min.z);
+            var rectTopRight = bounds.max;
             
             Gizmos.color = Color.gray;
             Gizmos.DrawLine(rectBottomLeft, rectBottomRight);
