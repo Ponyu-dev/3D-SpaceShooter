@@ -6,7 +6,7 @@
 
 using System;
 using _Game.GameEngine.Behaviours.HitPoints;
-using _Game.GameEngine.Behaviours.Move.MovementBoundedCameraSize;
+using _Game.GameEngine.Behaviours.Move.MovementBounded;
 using _Game.GameEngine.Behaviours.Rotate.RotationTilt;
 using _Game.GameEngine.Behaviours.Visual;
 using Atomic.Elements;
@@ -18,7 +18,7 @@ namespace _Game.Gameplay.Player.Scripts.Installers
     [Serializable]
     public sealed class PlayerEntityInstaller : SceneEntityInstallerBase
     {
-        [SerializeField] private MovementBoundedCameraSizeBehaviourInstaller movementBoundedCameraSizeBehaviourInstaller;
+        [SerializeField] private MovementBoundedBehaviourInstaller movementBoundedBehaviourInstaller;
         [SerializeField] private RotationTiltBehaviourInstaller rotationTiltBehaviourInstaller;
         [SerializeField] private HitPointsBehaviourInstaller hitPointsBehaviourInstaller;
         
@@ -32,8 +32,8 @@ namespace _Game.Gameplay.Player.Scripts.Installers
             
             hitPointsBehaviourInstaller.Install(entity);
             
-            movementBoundedCameraSizeBehaviourInstaller.Install(entity);
-            movementBoundedCameraSizeBehaviourInstaller.CanMoveAppend(hitPointsBehaviourInstaller.IsNotDead());
+            movementBoundedBehaviourInstaller.Install(entity);
+            movementBoundedBehaviourInstaller.CanMoveAppend(hitPointsBehaviourInstaller.IsNotDead());
             
             rotationTiltBehaviourInstaller.Install(entity);
         }

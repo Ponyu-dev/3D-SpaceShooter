@@ -51,6 +51,9 @@ MonoBehaviour:
     - id: 7
       name: PlayerTransform
       type: Const<Transform>
+    - id: 9
+      name: PlayerBounds
+      type: Const<Bounds>
   - Name: Asteroids
     Namespace: Atomic.Contexts
     DirectoryPath: Assets/_Game/Atomic/Codegen
@@ -63,3 +66,9 @@ MonoBehaviour:
     - id: 8
       name: ReactiveAsteroidsProperties
       type: ReactiveVariable<AsteroidsProperties>
+    - id: 10
+      name: AsteroidsContainer
+      type: Const<Transform>
+    - id: 11
+      name: AsteroidsBounds
+      type: Const<Bounds>

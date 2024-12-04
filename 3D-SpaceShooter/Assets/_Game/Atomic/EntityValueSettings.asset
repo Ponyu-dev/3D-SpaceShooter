@@ -33,6 +33,9 @@ MonoBehaviour:
     - id: 4
       name: Position
       type: ReactiveVector3
+    - id: 6
+      name: MoveBounds
+      type: Const<Bounds>
   - name: Rotate
     indexes:
     - id: 5
