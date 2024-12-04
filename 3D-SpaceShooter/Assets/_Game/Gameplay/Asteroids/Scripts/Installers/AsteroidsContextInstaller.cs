@@ -29,6 +29,7 @@ namespace _Game.Gameplay.Asteroids.Scripts.Installers
             context.AddReactiveAsteroidsProperties(reactiveAsteroidsProperties);
             context.AddSpawnAsteroidData(new Const<SpawnAsteroidData>(spawnAsteroidData));
             context.AddSystem<AsteroidsSpawnerSystem>();
+            context.AddSystem<AsteroidsPositionSystem>();
             context.AddSystem<AsteroidsRotationSystem>();
         }
 

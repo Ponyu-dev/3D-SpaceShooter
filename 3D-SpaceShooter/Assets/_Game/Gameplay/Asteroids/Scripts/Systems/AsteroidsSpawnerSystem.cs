@@ -8,7 +8,6 @@ using _Game.Gameplay.Asteroids.Scripts.Data;
 using _Game.Gameplay.Asteroids.Scripts.UseCases;
 using Atomic.Contexts;
 using Atomic.Elements;
-using UnityEngine;
 
 namespace _Game.Gameplay.Asteroids.Scripts
 {
@@ -17,8 +16,6 @@ namespace _Game.Gameplay.Asteroids.Scripts
         private IContext _gameContext;
         private Cycle _spawnPeriod;
         private IReactiveVariable<AsteroidsProperties> _asteroidsProperties;
-        
-        private int _activeCount = 0;
         
         public void Init(IContext context)
         {
@@ -46,12 +43,8 @@ namespace _Game.Gameplay.Asteroids.Scripts
 
         private void Spawn()
         {
-            if (_activeCount > 4)
-                return;
-
             var go = _gameContext.SpawnAsteroidInArea();
-            _activeCount++;
-            _asteroidsProperties.Value.SpawnAsteroid(go.transform);
+            _asteroidsProperties.Value.SpawnAsteroid(go.transform, -_gameContext.GetPlayerBounds().Value.RandomAsteroidSpawnPoint());
         }
     }
 }

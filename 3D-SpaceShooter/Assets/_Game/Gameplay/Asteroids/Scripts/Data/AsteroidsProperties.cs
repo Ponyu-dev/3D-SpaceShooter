@@ -31,7 +31,7 @@ namespace _Game.Gameplay.Asteroids.Scripts.Data
             transformAccessArray = new TransformAccessArray(initialCapacity);
         }
 
-        public int SpawnAsteroid(Transform newTransform)
+        public int SpawnAsteroid(Transform newTransform, Vector3 positionDirection)
         {
             // Добавляем Transform в TransformAccessArray
             transformAccessArray.Add(newTransform);
@@ -49,7 +49,9 @@ namespace _Game.Gameplay.Asteroids.Scripts.Data
             var newIndex = transformAccessArray.length - 1;
             asteroidData[newIndex] = new AsteroidData(
                 new Vector3(Random.value, Random.value, Random.value).normalized,
-                Random.Range(10f, 50f));
+                Random.Range(10f, 50f),
+                positionDirection,
+                Random.Range(0.1f, 1f));
 
             return newIndex; // Возвращаем индекс нового элемента
         }

@@ -836,7 +836,8 @@ MonoBehaviour:
       m_Center: {x: 0, y: 0, z: 0}
       m_Extent: {x: 0, y: 0, z: 0}
     spawnCycle:
-      duration: 1
+      duration: 0.1
+  reactiveAsteroidsProperties: {}
 --- !u!1 &1441432352
 GameObject:
   m_ObjectHideFlags: 0
