@@ -16,6 +16,7 @@ namespace Atomic.Entities
         public const int MoveDirection = 2; // ReactiveVector3
         public const int CanMove = 3; // AndExpression
         public const int Position = 4; // ReactiveVector3
+        public const int MoveBounds = 6; // Const<Bounds>
 
 
         ///Extensions
@@ -90,5 +91,23 @@ namespace Atomic.Entities
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static void SetPosition(this IEntity obj, ReactiveVector3 value) => obj.SetValue(Position, value);
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static Const<Bounds> GetMoveBounds(this IEntity obj) => obj.GetValue<Const<Bounds>>(MoveBounds);
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static bool TryGetMoveBounds(this IEntity obj, out Const<Bounds> value) => obj.TryGetValue(MoveBounds, out value);
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static bool AddMoveBounds(this IEntity obj, Const<Bounds> value) => obj.AddValue(MoveBounds, value);
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static bool HasMoveBounds(this IEntity obj) => obj.HasValue(MoveBounds);
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static bool DelMoveBounds(this IEntity obj) => obj.DelValue(MoveBounds);
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static void SetMoveBounds(this IEntity obj, Const<Bounds> value) => obj.SetValue(MoveBounds, value);
     }
 }

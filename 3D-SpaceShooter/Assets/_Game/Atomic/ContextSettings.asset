@@ -37,6 +37,9 @@ MonoBehaviour:
     - id: 5
       name: DeltaMove
       type: ReactiveVector3
+    - id: 9
+      name: PlayerBounds
+      type: ReactiveVariable<Bounds>
   - Name: Player
     Namespace: Atomic.Contexts
     DirectoryPath: Assets/_Game/Atomic/Codegen
@@ -51,3 +54,24 @@ MonoBehaviour:
     - id: 7
       name: PlayerTransform
       type: Const<Transform>
+  - Name: Asteroids
+    Namespace: Atomic.Contexts
+    DirectoryPath: Assets/_Game/Atomic/Codegen
+    ClassSuffix: API
+    Imports:
+    - Atomic.Elements
+    - UnityEngine.Jobs
+    - _Game.Gameplay.Asteroids.Scripts.Data
+    items:
+    - id: 8
+      name: ReactiveAsteroidsProperties
+      type: ReactiveVariable<AsteroidsProperties>
+    - id: 10
+      name: AsteroidsContainer
+      type: Const<Transform>
+    - id: 11
+      name: AsteroidsBounds
+      type: Const<Bounds>
+    - id: 13
+      name: SpawnAsteroidData
+      type: Const<SpawnAsteroidData>
