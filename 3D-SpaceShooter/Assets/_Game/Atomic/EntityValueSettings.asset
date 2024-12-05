@@ -48,6 +48,9 @@ MonoBehaviour:
     - id: 10
       name: TiltSmoothness
       type: Const<float>
+    - id: 22
+      name: CanRotate
+      type: AndExpression
   - name: Core
     indexes:
     - id: 7

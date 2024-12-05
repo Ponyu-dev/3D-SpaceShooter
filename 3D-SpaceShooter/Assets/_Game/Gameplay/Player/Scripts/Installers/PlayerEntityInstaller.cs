@@ -36,6 +36,7 @@ namespace _Game.Gameplay.Player.Scripts.Installers
             movementBoundedBehaviourInstaller.CanMoveAppend(hitPointsBehaviourInstaller.IsNotDead());
             
             rotationTiltBehaviourInstaller.Install(entity);
+            rotationTiltBehaviourInstaller.CanRotateAppend(hitPointsBehaviourInstaller.IsNotDead());
         }
     }
 }
