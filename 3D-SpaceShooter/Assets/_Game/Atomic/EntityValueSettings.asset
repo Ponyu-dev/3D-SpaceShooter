@@ -65,11 +65,8 @@ MonoBehaviour:
   - name: HitPoints
     indexes:
     - id: 11
-      name: CurrentHp
-      type: ReactiveInt
-    - id: 12
-      name: MaxHp
-      type: ReactiveInt
+      name: HitPoint
+      type: IntVariableLimited
     - id: 13
       name: CanTakeDamage
       type: AndExpression

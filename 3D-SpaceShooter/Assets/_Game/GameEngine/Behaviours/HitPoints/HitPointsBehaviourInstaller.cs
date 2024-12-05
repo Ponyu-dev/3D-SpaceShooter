@@ -8,6 +8,7 @@ using System;
 using _Game.GameEngine.Behaviours.Common;
 using Atomic.Elements;
 using Atomic.Entities;
+using Elementary;
 using UnityEngine;
 
 namespace _Game.GameEngine.Behaviours.HitPoints
@@ -16,7 +17,7 @@ namespace _Game.GameEngine.Behaviours.HitPoints
     public sealed class HitPointsBehaviourInstaller : IBehaviourInstaller
     {
         [SerializeField] private ReactiveBool isDead;
-        [SerializeField] private ReactiveInt maxHp;
+        [SerializeField] private IntVariableLimited hitPoint;
         [SerializeField] private AndExpression canTakeDamage;
         [SerializeField] private BaseEvent<int> takeDamageEvent;
 
@@ -25,8 +26,7 @@ namespace _Game.GameEngine.Behaviours.HitPoints
         public void Install(IEntity entity)
         {
             entity.AddIsDead(isDead);
-            entity.AddMaxHp(maxHp);
-            entity.AddCurrentHp(new ReactiveInt(maxHp.Value));
+            entity.AddHitPoint(hitPoint);
             entity.AddCanTakeDamage(canTakeDamage);
             entity.AddTakeDamageEvent(takeDamageEvent);
 

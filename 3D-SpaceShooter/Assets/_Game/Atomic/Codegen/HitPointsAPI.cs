@@ -13,8 +13,7 @@ namespace Atomic.Entities
     public static class HitPointsAPI
     {
         ///Keys
-        public const int CurrentHp = 11; // ReactiveInt
-        public const int MaxHp = 12; // ReactiveInt
+        public const int HitPoint = 11; // IntVariableLimited
         public const int CanTakeDamage = 13; // AndExpression
         public const int TakeDamageEvent = 14; // BaseEvent<int>
         public const int IsDead = 15; // ReactiveBool
@@ -22,40 +21,22 @@ namespace Atomic.Entities
 
         ///Extensions
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static ReactiveInt GetCurrentHp(this IEntity obj) => obj.GetValue<ReactiveInt>(CurrentHp);
+        public static IntVariableLimited GetHitPoint(this IEntity obj) => obj.GetValue<IntVariableLimited>(HitPoint);
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static bool TryGetCurrentHp(this IEntity obj, out ReactiveInt value) => obj.TryGetValue(CurrentHp, out value);
+        public static bool TryGetHitPoint(this IEntity obj, out IntVariableLimited value) => obj.TryGetValue(HitPoint, out value);
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static bool AddCurrentHp(this IEntity obj, ReactiveInt value) => obj.AddValue(CurrentHp, value);
+        public static bool AddHitPoint(this IEntity obj, IntVariableLimited value) => obj.AddValue(HitPoint, value);
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static bool HasCurrentHp(this IEntity obj) => obj.HasValue(CurrentHp);
+        public static bool HasHitPoint(this IEntity obj) => obj.HasValue(HitPoint);
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static bool DelCurrentHp(this IEntity obj) => obj.DelValue(CurrentHp);
+        public static bool DelHitPoint(this IEntity obj) => obj.DelValue(HitPoint);
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static void SetCurrentHp(this IEntity obj, ReactiveInt value) => obj.SetValue(CurrentHp, value);
-
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static ReactiveInt GetMaxHp(this IEntity obj) => obj.GetValue<ReactiveInt>(MaxHp);
-
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static bool TryGetMaxHp(this IEntity obj, out ReactiveInt value) => obj.TryGetValue(MaxHp, out value);
-
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static bool AddMaxHp(this IEntity obj, ReactiveInt value) => obj.AddValue(MaxHp, value);
-
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static bool HasMaxHp(this IEntity obj) => obj.HasValue(MaxHp);
-
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static bool DelMaxHp(this IEntity obj) => obj.DelValue(MaxHp);
-
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static void SetMaxHp(this IEntity obj, ReactiveInt value) => obj.SetValue(MaxHp, value);
+        public static void SetHitPoint(this IEntity obj, IntVariableLimited value) => obj.SetValue(HitPoint, value);
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static AndExpression GetCanTakeDamage(this IEntity obj) => obj.GetValue<AndExpression>(CanTakeDamage);
