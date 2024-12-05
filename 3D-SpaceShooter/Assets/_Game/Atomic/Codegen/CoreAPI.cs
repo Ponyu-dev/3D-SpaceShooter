@@ -6,6 +6,7 @@ using UnityEngine;
 using Atomic.Entities;
 using System.Runtime.CompilerServices;
 using Atomic.Elements;
+using Elementary;
 
 namespace Atomic.Entities
 {
@@ -14,7 +15,8 @@ namespace Atomic.Entities
         ///Keys
         public const int Transform = 7; // Const<Transform>
         public const int MainCamera = 8; // Const<Camera>
-        public const int TriggerEnteredEvent = 17; // BaseEvent<IEntity>
+        public const int DespawnEvent = 17; // BaseEvent<IEntity>
+        public const int CollisionSensor = 18; // Const<CollisionSensor>
 
 
         ///Extensions
@@ -55,21 +57,39 @@ namespace Atomic.Entities
         public static void SetMainCamera(this IEntity obj, Const<Camera> value) => obj.SetValue(MainCamera, value);
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static BaseEvent<IEntity> GetTriggerEnteredEvent(this IEntity obj) => obj.GetValue<BaseEvent<IEntity>>(TriggerEnteredEvent);
+        public static BaseEvent<IEntity> GetDespawnEvent(this IEntity obj) => obj.GetValue<BaseEvent<IEntity>>(DespawnEvent);
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static bool TryGetTriggerEnteredEvent(this IEntity obj, out BaseEvent<IEntity> value) => obj.TryGetValue(TriggerEnteredEvent, out value);
+        public static bool TryGetDespawnEvent(this IEntity obj, out BaseEvent<IEntity> value) => obj.TryGetValue(DespawnEvent, out value);
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static bool AddTriggerEnteredEvent(this IEntity obj, BaseEvent<IEntity> value) => obj.AddValue(TriggerEnteredEvent, value);
+        public static bool AddDespawnEvent(this IEntity obj, BaseEvent<IEntity> value) => obj.AddValue(DespawnEvent, value);
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static bool HasTriggerEnteredEvent(this IEntity obj) => obj.HasValue(TriggerEnteredEvent);
+        public static bool HasDespawnEvent(this IEntity obj) => obj.HasValue(DespawnEvent);
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static bool DelTriggerEnteredEvent(this IEntity obj) => obj.DelValue(TriggerEnteredEvent);
+        public static bool DelDespawnEvent(this IEntity obj) => obj.DelValue(DespawnEvent);
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static void SetTriggerEnteredEvent(this IEntity obj, BaseEvent<IEntity> value) => obj.SetValue(TriggerEnteredEvent, value);
+        public static void SetDespawnEvent(this IEntity obj, BaseEvent<IEntity> value) => obj.SetValue(DespawnEvent, value);
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static Const<CollisionSensor> GetCollisionSensor(this IEntity obj) => obj.GetValue<Const<CollisionSensor>>(CollisionSensor);
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static bool TryGetCollisionSensor(this IEntity obj, out Const<CollisionSensor> value) => obj.TryGetValue(CollisionSensor, out value);
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static bool AddCollisionSensor(this IEntity obj, Const<CollisionSensor> value) => obj.AddValue(CollisionSensor, value);
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static bool HasCollisionSensor(this IEntity obj) => obj.HasValue(CollisionSensor);
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static bool DelCollisionSensor(this IEntity obj) => obj.DelValue(CollisionSensor);
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static void SetCollisionSensor(this IEntity obj, Const<CollisionSensor> value) => obj.SetValue(CollisionSensor, value);
     }
 }
