@@ -147,6 +147,11 @@ MonoBehaviour:
     collisionSensor: {fileID: 198516121852950469}
   damage:
     value: 10
+  hitPointsBehaviourInstaller:
+    isDead:
+      value: 0
+    maxHp:
+      value: 10
 --- !u!135 &526626553910081080
 SphereCollider:
   m_ObjectHideFlags: 0

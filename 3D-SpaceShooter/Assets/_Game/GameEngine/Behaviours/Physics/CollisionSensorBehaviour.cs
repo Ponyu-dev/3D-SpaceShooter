@@ -30,6 +30,9 @@ namespace _Game.GameEngine.Behaviours.Physics
         {
             if (!collision.gameObject.TryGetComponent<SceneEntity>(out var entity))
                 return;
+            
+            if (entity.HasAsteroidTag() && _entity.HasAsteroidTag())
+                return;
 
             if (!entity.TryGetTakeDamageEvent(out var damageEvent))
                 return;
