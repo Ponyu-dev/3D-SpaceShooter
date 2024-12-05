@@ -42,12 +42,12 @@ namespace _Game.Gameplay.Asteroids.Scripts
             _spawnPeriod.Stop();
             _spawnPeriod.OnCycle -= this.Spawn;
         }
-
+        
         private int _countTest = 0;
 
         private void Spawn()
         {
-            if (_countTest > 2)
+            if (_countTest > 20)
                 return;
             
             var go = _gameContext.SpawnAsteroidInArea();
