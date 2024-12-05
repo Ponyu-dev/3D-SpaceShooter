@@ -5,6 +5,7 @@
 // ------------------------------------------------------------------------------
 
 using System;
+using System.Collections.Generic;
 using NTC.Pool;
 using Unity.Collections;
 using UnityEngine;
@@ -16,6 +17,8 @@ namespace _Game.Gameplay.Asteroids.Scripts.Data
     [Serializable]
     public sealed class AsteroidsProperties : IDisposable
     {
+        private Dictionary<Transform, int> _transformToIndexMap = new();
+        
         [SerializeField] private NativeArray<AsteroidData> asteroidData;
         public NativeArray<AsteroidData> NativeAsteroidData => asteroidData;
 
@@ -28,10 +31,15 @@ namespace _Game.Gameplay.Asteroids.Scripts.Data
             transformAccessArray = new TransformAccessArray(initialCapacity);
         }
 
-        public int SpawnAsteroid(Transform newTransform, Vector3 positionDirection)
+        public void SpawnAsteroid(Transform newTransform, Vector3 positionDirection)
         {
+            if (_transformToIndexMap.ContainsKey(newTransform))
+                throw new InvalidOperationException("Transform уже зарегистрирован.");
+            
             // Добавляем Transform в TransformAccessArray
             transformAccessArray.Add(newTransform);
+            var newIndex = transformAccessArray.length - 1;
+            _transformToIndexMap[newTransform] = newIndex;
 
             // Увеличиваем NativeArray, если нужно
             if (asteroidData.Length < transformAccessArray.length)
@@ -43,21 +51,18 @@ namespace _Game.Gameplay.Asteroids.Scripts.Data
             }
 
             // Генерируем данные для нового астероида
-            var newIndex = transformAccessArray.length - 1;
             asteroidData[newIndex] = new AsteroidData(
                 new Vector3(Random.value, Random.value, Random.value).normalized,
                 Random.Range(10f, 50f),
                 -positionDirection.normalized,
                 Random.Range(1f, 10f));
-
-            return newIndex; // Возвращаем индекс нового элемента
         }
 
-        public void DespawnAsteroid(int index)
+        public void DespawnAsteroid(Transform transform)
         {
-            if (index < 0 || index >= transformAccessArray.length)
-                throw new ArgumentOutOfRangeException(nameof(index), "Invalid index for DespawnAsteroid.");
-
+            if (!_transformToIndexMap.TryGetValue(transform, out var index))
+                throw new ArgumentException("Transform не найден.");
+            
             NightPool.Despawn(transformAccessArray[index].gameObject);
             
             // Удаляем Transform из TransformAccessArray
@@ -68,6 +73,8 @@ namespace _Game.Gameplay.Asteroids.Scripts.Data
             if (index < lastIndex)
             {
                 asteroidData[index] = asteroidData[lastIndex];
+                var lastTransform = transformAccessArray[index];
+                _transformToIndexMap[lastTransform] = index;
             }
 
             // Уменьшаем размер массива
@@ -75,6 +82,8 @@ namespace _Game.Gameplay.Asteroids.Scripts.Data
             NativeArray<AsteroidData>.Copy(asteroidData, newAsteroidData, lastIndex);
             asteroidData.Dispose();
             asteroidData = newAsteroidData;
+            
+            _transformToIndexMap.Remove(transform);
         }
 
         public void Dispose()

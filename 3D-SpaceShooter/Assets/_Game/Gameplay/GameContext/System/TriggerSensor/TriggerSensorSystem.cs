@@ -28,9 +28,10 @@ namespace _Game.Gameplay.GameContext.System.TriggerSensor
 
         private void OnTriggerEntered(Collider collider)
         {
-            if (collider.TryGetComponent<SceneEntity>(out var entity))
+            if (collider.TryGetComponent<SceneEntity>(out var entity) &&
+                entity.TryGetDespawnEvent(out var despawnEvent))
             {
-                entity.GetTriggerEnteredEvent().Invoke(entity);
+                despawnEvent.Invoke(entity);
             }
         }
 

@@ -76,6 +76,7 @@ GameObject:
   - component: {fileID: 4510643470932504885}
   - component: {fileID: 526626553910081080}
   - component: {fileID: 2909264571513987203}
+  - component: {fileID: 198516121852950469}
   m_Layer: 0
   m_Name: Asteroid 3
   m_TagString: Enemy
@@ -142,6 +143,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f15f5208764f4a46926c5a3d0df77438, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  collisionSensorBehaviourInstaller:
+    collisionSensor: {fileID: 198516121852950469}
+  damage:
+    value: 10
 --- !u!135 &526626553910081080
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -190,6 +195,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &198516121852950469
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 130102}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6de391f491074fadad43ea3be336fd30, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &153142
 GameObject:
   m_ObjectHideFlags: 0

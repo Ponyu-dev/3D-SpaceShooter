@@ -53,17 +53,17 @@ namespace _Game.Gameplay.Asteroids.Scripts
             var go = _gameContext.SpawnAsteroidInArea();
             var targetPoint = _gameContext.GetPlayerBounds().Value.RandomAsteroidSpawnPoint();
             var positionDirection = (go.transform.position - targetPoint).normalized;
-            var index = _asteroidsProperties.Value.SpawnAsteroid(go.transform, positionDirection);
+            _asteroidsProperties.Value.SpawnAsteroid(go.transform, positionDirection);
             
             _countTest++;
             
             if (go.TryGetComponent<SceneEntity>(out var entity))
             {
-                entity.GetTriggerEnteredEvent().Subscribe(OnTriggerEntered);
+                entity.GetDespawnEvent().Subscribe(OnTriggerEntered);
                 
-                if (entity.HasAsteroidIndex())
-                    entity.DelAsteroidIndex();
-                entity.AddAsteroidIndex(new Const<int>(index));
+                if (entity.HasTransform())
+                    entity.DelTransform();
+                entity.AddTransform(new Const<Transform>(go.transform));
                 
                 entity.GetPosition().Value = targetPoint;
             }
@@ -71,8 +71,8 @@ namespace _Game.Gameplay.Asteroids.Scripts
 
         private void OnTriggerEntered(IEntity entity)
         {
-            entity.GetTriggerEnteredEvent().Unsubscribe(OnTriggerEntered);
-            _asteroidsProperties.Value.DespawnAsteroid(entity.GetAsteroidIndex().Value);
+            entity.GetDespawnEvent().Unsubscribe(OnTriggerEntered);
+            _asteroidsProperties.Value.DespawnAsteroid(entity.GetTransform().Value);
             _countTest--;
         }
     }

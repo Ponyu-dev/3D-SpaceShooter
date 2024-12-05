@@ -5,22 +5,26 @@
 // ------------------------------------------------------------------------------
 
 using System;
+using _Game.GameEngine.Behaviours.Physics;
 using Atomic.Elements;
 using Atomic.Entities;
 using UnityEngine;
-using UnityEngine.Rendering;
 
 namespace _Game.Gameplay.Asteroids.Scripts.Installers
 {
     [Serializable]
     public sealed class AsteroidEntityInstaller : SceneEntityInstallerBase
     {
-        [SerializeField] private BaseEvent<IEntity> triggerEnteredEvent;
+        [SerializeField] private BaseEvent<IEntity> despawnEvent;
+        [SerializeField] private CollisionSensorBehaviourInstaller collisionSensorBehaviourInstaller;
+        [SerializeField] private ReactiveInt damage;
         
         public override void Install(IEntity entity)
         {
-            entity.AddTriggerEnteredEvent(triggerEnteredEvent);
+            entity.AddDamage(damage);
+            entity.AddDespawnEvent(despawnEvent);
             entity.AddPosition(new ReactiveVector3(Vector3.zero));
+            collisionSensorBehaviourInstaller.Install(entity);
             _entity = entity;
         }
 
