@@ -12,7 +12,8 @@
 		"Unity.Mathematics",
 		"Unity.InputSystem",
 		"NightPool",
-		"Elementary"
+		"Elementary",
+		"Unity.TextMeshPro"
 	],
 	"includePlatforms": [],
 	"excludePlatforms": [],
