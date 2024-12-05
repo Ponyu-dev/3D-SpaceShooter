@@ -16,6 +16,7 @@ namespace _Game.GameEngine.Behaviours.Rotate.RotationTilt
         private ReactiveVector3 _moveDirection;
         private IValue<float> _tiltAmount;
         private IValue<float> _tiltSmoothness;
+        private AndExpression _canRotate;
         
         public void Init(IEntity entity)
         {
@@ -23,10 +24,14 @@ namespace _Game.GameEngine.Behaviours.Rotate.RotationTilt
             _moveDirection = entity.GetMoveDirection();
             _tiltAmount = entity.GetTiltAmount();
             _tiltSmoothness = entity.GetTiltSmoothness();
+            _canRotate = entity.GetCanRotate();
         }
 
         public void OnFixedUpdate(IEntity entity, float deltaTime)
         {
+            if (!_canRotate.Value)
+                return;
+            
             var targetTilt = Mathf.Clamp(-_moveDirection.Value.x * _tiltAmount.Value, -_tiltAmount.Value, _tiltAmount.Value);
             var tiltRotation = Quaternion.Euler(_rotation.Value.x, _rotation.Value.y, targetTilt);
             _rotation.Value = Quaternion.Slerp(_rotation.Value, tiltRotation, deltaTime * _tiltSmoothness.Value);

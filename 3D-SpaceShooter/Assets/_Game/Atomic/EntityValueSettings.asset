@@ -48,6 +48,9 @@ MonoBehaviour:
     - id: 10
       name: TiltSmoothness
       type: Const<float>
+    - id: 22
+      name: CanRotate
+      type: AndExpression
   - name: Core
     indexes:
     - id: 7
@@ -86,3 +89,28 @@ MonoBehaviour:
     - id: 19
       name: Damage
       type: ReactiveInt
+  - name: Shoot
+    indexes:
+    - id: 12
+      name: PeriodShoot
+      type: Cycle
+    - id: 20
+      name: CanShoot
+      type: AndExpression
+    - id: 21
+      name: ActionShoot
+      type: BaseEvent
+  - name: Weapon
+    indexes:
+    - id: 23
+      name: WeaponFirePoint
+      type: Const<Transform>
+    - id: 24
+      name: WeaponDirectionTarget
+      type: ReactiveVector3
+    - id: 25
+      name: WeaponDefaultBulletSpeed
+      type: Const<float>
+    - id: 26
+      name: WeaponDefaultBulletDamage
+      type: Const<int>

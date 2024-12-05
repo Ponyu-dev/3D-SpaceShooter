@@ -50,11 +50,6 @@ namespace _Game.GameEngine.Behaviours.Move.MovementBounded
                 out var newPosition
             );
             _position.Value = _bounds.Value.ClosestPoint(newPosition);
-            /*var viewportPos = _mainCamera.Value.WorldToViewportPoint(newPosition);
-            viewportPos.x = Mathf.Clamp(viewportPos.x, 0.1f, 0.9f);
-            viewportPos.y = Mathf.Clamp(viewportPos.y, 0.1f, 0.9f);
-
-            _mainCamera.Value.ViewportToWorldPoint(viewportPos);*/
         }
     }
 }
