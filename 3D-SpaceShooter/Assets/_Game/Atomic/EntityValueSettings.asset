@@ -86,3 +86,14 @@ MonoBehaviour:
     - id: 19
       name: Damage
       type: ReactiveInt
+  - name: Shoot
+    indexes:
+    - id: 12
+      name: PeriodShoot
+      type: Cycle
+    - id: 20
+      name: CanShoot
+      type: AndExpression
+    - id: 21
+      name: ActionShoot
+      type: BaseEvent
