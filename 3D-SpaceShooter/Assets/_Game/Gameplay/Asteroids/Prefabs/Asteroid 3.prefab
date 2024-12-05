@@ -150,8 +150,9 @@ MonoBehaviour:
   hitPointsBehaviourInstaller:
     isDead:
       value: 0
-    maxHp:
-      value: 10
+    hitPoint:
+      currentValue: 10
+      maxValue: 10
 --- !u!135 &526626553910081080
 SphereCollider:
   m_ObjectHideFlags: 0

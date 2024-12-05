@@ -597,8 +597,9 @@ MonoBehaviour:
   hitPointsBehaviourInstaller:
     isDead:
       value: 0
-    maxHp:
-      value: 100
+    hitPoint:
+      currentValue: 100
+      maxValue: 100
 --- !u!114 &1249048886
 MonoBehaviour:
   m_ObjectHideFlags: 0
