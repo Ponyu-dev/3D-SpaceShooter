@@ -18,14 +18,10 @@ namespace _Game.Gameplay.Asteroids.Scripts.UseCases
             var spawnPoint = gameContext.GetSpawnAsteroidData().Value.spawnArea.RandomAsteroidSpawnPoint();
             return gameContext.SpawnAsteroid(spawnPoint);
         }
-        
+
         public static GameObject SpawnAsteroid(this IContext gameContext, Vector3 spawnPoint)
         {
             var asteroid = NightPool.Spawn(gameContext.GetSpawnAsteroidData().Value.prefab, spawnPoint, Quaternion.identity, gameContext.GetAsteroidsContainer().Value);
-            Debug.Log($"[AsteroidsSpawnerSystem] Spawn {asteroid.name}");
-            //IEntityPool coinPool = gameContext.GetCoinSystemData().pool;
-            //IEntity coin = coinPool.Rent();
-            //coin.GetPosition().Value = spawnPoint;
             return asteroid;
         }
             
