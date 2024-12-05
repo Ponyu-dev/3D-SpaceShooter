@@ -37,7 +37,7 @@ namespace _Game.Gameplay.Player.Scripts.Installers
         {
             var rectBottomLeft = bounds.Value.min;
             var rectBottomRight = new Vector3(bounds.Value.max.x, bounds.Value.min.y, bounds.Value.min.z);
-            var rectTopLeft = new Vector3(bounds.Value.min.x, bounds.Value.max.y, bounds.Value.min.z);
+            var rectTopLeft = new Vector3(bounds.Value.min.x, bounds.Value.max.y, bounds.Value.max.z);
             var rectTopRight = bounds.Value.max;
             
             Gizmos.color = Color.red;

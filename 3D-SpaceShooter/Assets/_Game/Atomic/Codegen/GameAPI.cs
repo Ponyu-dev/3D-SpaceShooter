@@ -7,6 +7,7 @@ using Atomic.Contexts;
 using System.Runtime.CompilerServices;
 using Atomic.Elements;
 using UnityEngine.InputSystem;
+using Elementary;
 
 namespace Atomic.Contexts
 {
@@ -19,6 +20,7 @@ namespace Atomic.Contexts
 		public const int IsTouching = 4; // ReactiveBool
 		public const int DeltaMove = 5; // ReactiveVector3
 		public const int PlayerBounds = 9; // ReactiveVariable<Bounds>
+		public const int TriggerSensor = 12; // Const<TriggerSensor>
 
 
 		///Extensions
@@ -129,5 +131,23 @@ namespace Atomic.Contexts
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static bool HasPlayerBounds(this IContext obj) => obj.HasValue(PlayerBounds);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static Const<TriggerSensor> GetTriggerSensor(this IContext obj) => obj.ResolveValue<Const<TriggerSensor>>(TriggerSensor);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static bool TryGetTriggerSensor(this IContext obj, out Const<TriggerSensor> value) => obj.TryResolveValue(TriggerSensor, out value);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static bool AddTriggerSensor(this IContext obj, Const<TriggerSensor> value) => obj.AddValue(TriggerSensor, value);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static bool DelTriggerSensor(this IContext obj) => obj.DelValue(TriggerSensor);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static void SetTriggerSensor(this IContext obj, Const<TriggerSensor> value) => obj.SetValue(TriggerSensor, value);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static bool HasTriggerSensor(this IContext obj) => obj.HasValue(TriggerSensor);
     }
 }

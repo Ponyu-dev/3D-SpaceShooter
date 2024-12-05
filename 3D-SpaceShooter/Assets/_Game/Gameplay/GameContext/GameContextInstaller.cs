@@ -5,6 +5,7 @@
 // ------------------------------------------------------------------------------
 
 using _Game.GameEngine.Input.Scripts;
+using _Game.Gameplay.GameContext.System.TriggerSensor;
 using Atomic.Contexts;
 using Atomic.Elements;
 using UnityEngine;
@@ -17,6 +18,7 @@ namespace _Game.Gameplay.GameContext
         [SerializeField] private Camera mainCamera;
         
         [SerializeField] private TouchInputSystemInstaller touchInputSystemInstaller;
+        [SerializeField] private TriggerSensorSystemInstaller triggerSensorSystemInstaller;
         
         public override void Install(IContext context)
         {
@@ -25,6 +27,7 @@ namespace _Game.Gameplay.GameContext
             context.AddMainCamera(new Const<Camera>(mainCamera));
 
             touchInputSystemInstaller.Install(context);
+            triggerSensorSystemInstaller.Install(context);
         }
     }
 }
