@@ -47,8 +47,8 @@ namespace _Game.Gameplay.Asteroids.Scripts.Data
             asteroidData[newIndex] = new AsteroidData(
                 new Vector3(Random.value, Random.value, Random.value).normalized,
                 Random.Range(10f, 50f),
-                positionDirection,
-                Random.Range(0.1f, 1f));
+                -positionDirection.normalized,
+                Random.Range(1f, 10f));
 
             return newIndex; // Возвращаем индекс нового элемента
         }

@@ -9,6 +9,7 @@ using _Game.Gameplay.Asteroids.Scripts.UseCases;
 using Atomic.Contexts;
 using Atomic.Elements;
 using Atomic.Entities;
+using UnityEngine;
 
 namespace _Game.Gameplay.Asteroids.Scripts
 {
@@ -50,7 +51,9 @@ namespace _Game.Gameplay.Asteroids.Scripts
                 return;
             
             var go = _gameContext.SpawnAsteroidInArea();
-            var index = _asteroidsProperties.Value.SpawnAsteroid(go.transform, -_gameContext.GetPlayerBounds().Value.RandomAsteroidSpawnPoint());
+            var targetPoint = _gameContext.GetPlayerBounds().Value.RandomAsteroidSpawnPoint();
+            var positionDirection = (go.transform.position - targetPoint).normalized;
+            var index = _asteroidsProperties.Value.SpawnAsteroid(go.transform, positionDirection);
             
             _countTest++;
             
@@ -60,8 +63,9 @@ namespace _Game.Gameplay.Asteroids.Scripts
                 
                 if (entity.HasAsteroidIndex())
                     entity.DelAsteroidIndex();
-
                 entity.AddAsteroidIndex(new Const<int>(index));
+                
+                entity.GetPosition().Value = targetPoint;
             }
         }
 

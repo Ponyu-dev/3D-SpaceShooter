@@ -20,7 +20,8 @@ namespace _Game.Gameplay.Asteroids.Scripts.Jobs
         public void Execute(int index, TransformAccess transform)
         {
             var data = AsteroidDataArray[index];
-            transform.position += data.PositionSpeed * DeltaTime * data.PositionDirection;
+            var newPosition = transform.position + data.PositionSpeed * DeltaTime * data.PositionDirection;
+            transform.position = newPosition;
         }
     }
 }
