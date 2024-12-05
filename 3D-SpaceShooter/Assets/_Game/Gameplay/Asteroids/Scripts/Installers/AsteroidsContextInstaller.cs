@@ -43,7 +43,7 @@ namespace _Game.Gameplay.Asteroids.Scripts.Installers
             var bounds = spawnAsteroidData.spawnArea;
             var rectBottomLeft = bounds.min;
             var rectBottomRight = new Vector3(bounds.max.x, bounds.min.y, bounds.min.z);
-            var rectTopLeft = new Vector3(bounds.min.x, bounds.max.y, bounds.min.z);
+            var rectTopLeft = new Vector3(bounds.min.x, bounds.max.y, bounds.max.z);
             var rectTopRight = bounds.max;
             
             Gizmos.color = Color.gray;

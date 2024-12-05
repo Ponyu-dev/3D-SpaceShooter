@@ -5,6 +5,7 @@
 // ------------------------------------------------------------------------------
 
 using System;
+using NTC.Pool;
 using Unity.Collections;
 using UnityEngine;
 using UnityEngine.Jobs;
@@ -46,17 +47,19 @@ namespace _Game.Gameplay.Asteroids.Scripts.Data
             asteroidData[newIndex] = new AsteroidData(
                 new Vector3(Random.value, Random.value, Random.value).normalized,
                 Random.Range(10f, 50f),
-                positionDirection,
-                Random.Range(0.1f, 1f));
+                -positionDirection.normalized,
+                Random.Range(1f, 10f));
 
             return newIndex; // Возвращаем индекс нового элемента
         }
 
-        public void UnSpawnAsteroid(int index)
+        public void DespawnAsteroid(int index)
         {
             if (index < 0 || index >= transformAccessArray.length)
-                throw new ArgumentOutOfRangeException(nameof(index), "Invalid index for UnSpawnAsteroid.");
+                throw new ArgumentOutOfRangeException(nameof(index), "Invalid index for DespawnAsteroid.");
 
+            NightPool.Despawn(transformAccessArray[index].gameObject);
+            
             // Удаляем Transform из TransformAccessArray
             transformAccessArray.RemoveAtSwapBack(index);
 

@@ -55,6 +55,9 @@ MonoBehaviour:
     - id: 8
       name: MainCamera
       type: Const<Camera>
+    - id: 17
+      name: TriggerEnteredEvent
+      type: BaseEvent<IEntity>
   - name: HitPoints
     indexes:
     - id: 11
@@ -72,3 +75,8 @@ MonoBehaviour:
     - id: 15
       name: IsDead
       type: ReactiveBool
+  - name: Asteroid
+    indexes:
+    - id: 16
+      name: AsteroidIndex
+      type: Const<int>

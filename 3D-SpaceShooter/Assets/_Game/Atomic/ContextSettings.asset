@@ -21,6 +21,7 @@ MonoBehaviour:
     Imports:
     - Atomic.Elements
     - UnityEngine.InputSystem
+    - Elementary
     items:
     - id: 1
       name: WorldTransform
@@ -40,6 +41,9 @@ MonoBehaviour:
     - id: 9
       name: PlayerBounds
       type: ReactiveVariable<Bounds>
+    - id: 12
+      name: TriggerSensor
+      type: Const<TriggerSensor>
   - Name: Player
     Namespace: Atomic.Contexts
     DirectoryPath: Assets/_Game/Atomic/Codegen

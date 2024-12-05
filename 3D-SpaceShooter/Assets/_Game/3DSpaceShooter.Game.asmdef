@@ -11,7 +11,8 @@
 		"Unity.Burst",
 		"Unity.Mathematics",
 		"Unity.InputSystem",
-		"NightPool"
+		"NightPool",
+		"Elementary"
 	],
 	"includePlatforms": [],
 	"excludePlatforms": [],

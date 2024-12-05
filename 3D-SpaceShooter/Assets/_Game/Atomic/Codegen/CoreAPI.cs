@@ -14,6 +14,7 @@ namespace Atomic.Entities
         ///Keys
         public const int Transform = 7; // Const<Transform>
         public const int MainCamera = 8; // Const<Camera>
+        public const int TriggerEnteredEvent = 17; // BaseEvent<IEntity>
 
 
         ///Extensions
@@ -52,5 +53,23 @@ namespace Atomic.Entities
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static void SetMainCamera(this IEntity obj, Const<Camera> value) => obj.SetValue(MainCamera, value);
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static BaseEvent<IEntity> GetTriggerEnteredEvent(this IEntity obj) => obj.GetValue<BaseEvent<IEntity>>(TriggerEnteredEvent);
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static bool TryGetTriggerEnteredEvent(this IEntity obj, out BaseEvent<IEntity> value) => obj.TryGetValue(TriggerEnteredEvent, out value);
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static bool AddTriggerEnteredEvent(this IEntity obj, BaseEvent<IEntity> value) => obj.AddValue(TriggerEnteredEvent, value);
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static bool HasTriggerEnteredEvent(this IEntity obj) => obj.HasValue(TriggerEnteredEvent);
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static bool DelTriggerEnteredEvent(this IEntity obj) => obj.DelValue(TriggerEnteredEvent);
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static void SetTriggerEnteredEvent(this IEntity obj, BaseEvent<IEntity> value) => obj.SetValue(TriggerEnteredEvent, value);
     }
 }
