@@ -100,3 +100,17 @@ MonoBehaviour:
     - id: 21
       name: ActionShoot
       type: BaseEvent
+  - name: Weapon
+    indexes:
+    - id: 23
+      name: WeaponFirePoint
+      type: Const<Transform>
+    - id: 24
+      name: WeaponDirectionTarget
+      type: ReactiveVector3
+    - id: 25
+      name: WeaponDefaultBulletSpeed
+      type: Const<float>
+    - id: 26
+      name: WeaponDefaultBulletDamage
+      type: Const<int>

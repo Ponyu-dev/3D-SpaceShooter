@@ -351,6 +351,19 @@ MonoBehaviour:
     hitPoint:
       currentValue: 100
       maxValue: 100
+  shootingTimerBehaviorInstaller:
+    periodShoot:
+      duration: 0.5
+  weaponShootToForwardBehaviorInstaller:
+    worldTransform: {fileID: 0}
+    firePoint:
+      value: {fileID: 0}
+    directionShoot:
+      value: {x: 0, y: 0, z: 1}
+    bulletSpeed:
+      value: 10
+    bulletDamage:
+      value: 10
 --- !u!65 &5764299016673507644
 BoxCollider:
   m_ObjectHideFlags: 0
