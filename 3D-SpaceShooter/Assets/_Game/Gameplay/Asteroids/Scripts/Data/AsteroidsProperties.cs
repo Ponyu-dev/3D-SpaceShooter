@@ -5,13 +5,9 @@
 // ------------------------------------------------------------------------------
 
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using Sirenix.Serialization;
 using Unity.Collections;
 using UnityEngine;
 using UnityEngine.Jobs;
-using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
 
 namespace _Game.Gameplay.Asteroids.Scripts.Data
