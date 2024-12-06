@@ -7,6 +7,7 @@ using Atomic.Entities;
 using System.Runtime.CompilerServices;
 using Atomic.Elements;
 using Elementary;
+using _Game.Gameplay.Bullets.Scripts;
 
 namespace Atomic.Entities
 {
@@ -17,6 +18,7 @@ namespace Atomic.Entities
         public const int WeaponDirectionTarget = 24; // ReactiveVector3
         public const int WeaponDefaultBulletSpeed = 25; // Const<float>
         public const int WeaponDefaultBulletDamage = 26; // Const<int>
+        public const int WeaponBulletPrefab = 27; // BulletEntityInstaller
 
 
         ///Extensions
@@ -91,5 +93,23 @@ namespace Atomic.Entities
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static void SetWeaponDefaultBulletDamage(this IEntity obj, Const<int> value) => obj.SetValue(WeaponDefaultBulletDamage, value);
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static BulletEntityInstaller GetWeaponBulletPrefab(this IEntity obj) => obj.GetValue<BulletEntityInstaller>(WeaponBulletPrefab);
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static bool TryGetWeaponBulletPrefab(this IEntity obj, out BulletEntityInstaller value) => obj.TryGetValue(WeaponBulletPrefab, out value);
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static bool AddWeaponBulletPrefab(this IEntity obj, BulletEntityInstaller value) => obj.AddValue(WeaponBulletPrefab, value);
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static bool HasWeaponBulletPrefab(this IEntity obj) => obj.HasValue(WeaponBulletPrefab);
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static bool DelWeaponBulletPrefab(this IEntity obj) => obj.DelValue(WeaponBulletPrefab);
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static void SetWeaponBulletPrefab(this IEntity obj, BulletEntityInstaller value) => obj.SetValue(WeaponBulletPrefab, value);
     }
 }

@@ -371,7 +371,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _updateType: 0
-  preloadPoolsType: 0
+  preloadPoolsType: 1
   poolsPreset: {fileID: 11400000, guid: 4485b0fe747b34eb7bb1d9a4ebbe5b90, type: 2}
   _behaviourOnCapacityReached: 2
   _despawnType: 2

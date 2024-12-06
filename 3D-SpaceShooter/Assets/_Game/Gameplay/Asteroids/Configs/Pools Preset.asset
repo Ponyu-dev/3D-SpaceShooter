@@ -19,7 +19,17 @@ MonoBehaviour:
     _behaviourOnCapacityReached: 2
     _despawnType: 2
     _callbacksType: 1
-    _capacity: 5
+    _capacity: 10
+    _preloadSize: 10
+    _dontDestroyOnLoad: 0
+    _warnings: 1
+  - _name: Bullet1
+    _enabled: 1
+    _prefab: {fileID: 8824048910571942141, guid: 8def6b6503df142f18fa0e0e3aed942f, type: 3}
+    _behaviourOnCapacityReached: 2
+    _despawnType: 2
+    _callbacksType: 1
+    _capacity: 10
     _preloadSize: 10
     _dontDestroyOnLoad: 0
     _warnings: 1

@@ -19,6 +19,7 @@ MonoBehaviour:
   imports:
   - Atomic.Elements
   - Elementary
+  - _Game.Gameplay.Bullets.Scripts
   categories:
   - name: Move
     indexes:
@@ -114,3 +115,6 @@ MonoBehaviour:
     - id: 26
       name: WeaponDefaultBulletDamage
       type: Const<int>
+    - id: 27
+      name: WeaponBulletPrefab
+      type: BulletEntityInstaller

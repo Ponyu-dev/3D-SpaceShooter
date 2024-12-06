@@ -7,6 +7,7 @@ using Atomic.Entities;
 using System.Runtime.CompilerServices;
 using Atomic.Elements;
 using Elementary;
+using _Game.Gameplay.Bullets.Scripts;
 
 namespace Atomic.Entities
 {

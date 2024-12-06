@@ -6,7 +6,6 @@
 
 using Atomic.Elements;
 using Atomic.Entities;
-using UnityEngine;
 
 namespace _Game.GameEngine.Behaviours.Shoot
 {
@@ -14,18 +13,17 @@ namespace _Game.GameEngine.Behaviours.Shoot
     {
         private Cycle _periodShoot;
         private AndExpression _canShoot;
-        private BaseEvent _actionShoot;
+        private BaseEvent _eventShoot;
 
         public void Init(IEntity entity)
         {
             _periodShoot = entity.GetPeriodShoot();
             _canShoot = entity.GetCanShoot();
-            _actionShoot = entity.GetActionShoot();
+            _eventShoot = entity.GetActionShoot();
         }
 
         public void Enable(IEntity entity)
         {
-            Debug.Log("[ShootingTimerBehavior] Enable");
             _periodShoot.Start();
             _periodShoot.OnCycle += PeriodShoot;
         }
@@ -34,12 +32,7 @@ namespace _Game.GameEngine.Behaviours.Shoot
         {
             if (_canShoot.Value)
             {
-                Debug.Log("[ShootingTimerBehavior] PeriodShoot");
-                _actionShoot?.Invoke();
-            }
-            else
-            {
-                Debug.Log("[ShootingTimerBehavior] Can Not PeriodShoot");
+                _eventShoot?.Invoke();
             }
         }
 
@@ -50,7 +43,6 @@ namespace _Game.GameEngine.Behaviours.Shoot
 
         public void Disable(IEntity entity)
         {
-            Debug.Log("[ShootingTimerBehavior] Disable");
             _periodShoot.Stop();
             _periodShoot.OnCycle -= PeriodShoot;
         }
