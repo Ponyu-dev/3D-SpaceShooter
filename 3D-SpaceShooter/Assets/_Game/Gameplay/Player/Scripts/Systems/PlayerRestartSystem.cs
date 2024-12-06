@@ -4,6 +4,7 @@
 // <file>: PlayerRestartSystem.cs
 // ------------------------------------------------------------------------------
 
+using _Game.Gameplay.GameContext;
 using Atomic.Contexts;
 using Atomic.Elements;
 using Atomic.Entities;
@@ -45,6 +46,8 @@ namespace _Game.Gameplay.Player.Scripts.Systems
             _playerMoveDirection.Value = Vector3.zero;
             _playerIsDead.Value = false;
             _playerHitPoint.Current = _playerHitPoint.MaxValue;
+
+            SingletonGameContext.Instance.GetVictoryKillThreshold().Current = 0;
         }
 
         public void Disable(IContext context)

@@ -1,45 +1,45 @@
 // ------------------------------------------------------------------------------
 // <author>: Iurii Ponomarev (Ponyu)
 // <created>: 2024-12-06
-// <file>: GameOverTriggerSystem.cs
+// <file>: VictoryKillThresholdSystem.cs
 // ------------------------------------------------------------------------------
 
 using Atomic.Contexts;
 using Atomic.Elements;
-using Atomic.Entities;
+using Elementary;
 
-namespace _Game.Gameplay.Player.Scripts.Systems
+namespace _Game.Gameplay.GameContext.System.VictoryKillThreshold
 {
-    public sealed class GameOverTriggerSystem : IContextInit, IContextEnable, IContextDisable
+    public sealed class VictoryKillThresholdSystem : IContextInit, IContextEnable, IContextDisable
     {
         private BaseEvent<bool> _gameOverEvent;
-        private IReactiveValue<bool> _playerIsDead;
+        private IntVariableLimited _victoryKillThreshold;
         private IReactiveVariable<bool> _isGamePlay;
         
         public void Init(IContext context)
         {
-            _playerIsDead = context.GetPlayerEntity().Value.GetIsDead();
             _gameOverEvent = context.GetGameOverEvent();
+            _victoryKillThreshold = context.GetVictoryKillThreshold();
             _isGamePlay = context.GetIsGamePlay();
         }
 
         public void Enable(IContext context)
         {
-            _playerIsDead.Subscribe(PlayerIsDead);
+            _victoryKillThreshold.OnValueChanged += OnKillValueChanged;
         }
 
-        private void PlayerIsDead(bool value)
+        private void OnKillValueChanged(int current)
         {
-            if (!value)
+            if (!_victoryKillThreshold.IsLimit)
                 return;
             
-            _gameOverEvent?.Invoke(false);
+            _gameOverEvent?.Invoke(true);
             _isGamePlay.Value = false;
         }
 
         public void Disable(IContext context)
         {
-            _playerIsDead.Unsubscribe(PlayerIsDead);
+            _victoryKillThreshold.OnValueChanged -= OnKillValueChanged;
         }
     }
 }

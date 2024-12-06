@@ -14,7 +14,7 @@ namespace _Game.GameEngine.Behaviours.Common
     public sealed class GameOverSystem : IEntityEnable, IEntityDisable
     {
         private IEntity _entity;
-        private BaseEvent _gameOverEvent;
+        private BaseEvent<bool> _gameOverEvent;
 
         public void Enable(IEntity entity)
         {
@@ -23,7 +23,7 @@ namespace _Game.GameEngine.Behaviours.Common
             _gameOverEvent.Subscribe(OnGameOver);
         }
 
-        private void OnGameOver()
+        private void OnGameOver(bool isVictory)
         {
             if (_entity.TryGetDespawnEvent(out var despawnEvent))
             {
