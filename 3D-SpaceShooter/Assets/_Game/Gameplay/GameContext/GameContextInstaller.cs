@@ -5,6 +5,7 @@
 // ------------------------------------------------------------------------------
 
 using _Game.GameEngine.Input.Scripts;
+using _Game.Gameplay.Asteroids.Scripts;
 using _Game.Gameplay.GameContext.System.TriggerSensor;
 using Atomic.Contexts;
 using Atomic.Elements;
@@ -19,6 +20,7 @@ namespace _Game.Gameplay.GameContext
 
         [SerializeField] private ReactiveBool isGamePlay;
         [SerializeField] private AndExpression canGamePlay;
+        [SerializeField] private BaseEvent playerDeadEvent;
         
         [SerializeField] private TouchInputSystemInstaller touchInputSystemInstaller;
         [SerializeField] private TriggerSensorSystemInstaller triggerSensorSystemInstaller;
@@ -30,12 +32,14 @@ namespace _Game.Gameplay.GameContext
             context.AddMainCamera(new Const<Camera>(mainCamera));
 
             context.AddIsGamePlay(isGamePlay);
+            context.AddGameOverEvent(playerDeadEvent);
             
             canGamePlay.Append(() => isGamePlay.Value);
             context.AddCanGamePlay(canGamePlay);
 
             touchInputSystemInstaller.Install(context);
             triggerSensorSystemInstaller.Install(context);
+            context.AddSystem<AsteroidsClearSystem>();
         }
     }
 }

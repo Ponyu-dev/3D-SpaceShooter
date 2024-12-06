@@ -1207,6 +1207,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   worldTransform: {fileID: 1441432355}
   mainCamera: {fileID: 1238636267}
+  isGamePlay:
+    value: 0
   touchInputSystemInstaller:
     playerInput:
       value: {fileID: 3774906467770139595}
@@ -1481,6 +1483,10 @@ MonoBehaviour:
     gameContext: {fileID: 1184715926}
     btnStart: {fileID: 301533954}
     panelStart: {fileID: 301533950}
+  gameOverPresenter:
+    gameContext: {fileID: 1184715926}
+    btnRestart: {fileID: 2142352450}
+    panelGameOver: {fileID: 1696067931}
 --- !u!114 &1351977902
 MonoBehaviour:
   m_ObjectHideFlags: 0

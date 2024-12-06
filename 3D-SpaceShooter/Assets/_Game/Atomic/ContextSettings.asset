@@ -50,6 +50,9 @@ MonoBehaviour:
     - id: 15
       name: IsGamePlay
       type: ReactiveBool
+    - id: 16
+      name: GameOverEvent
+      type: BaseEvent
   - Name: Player
     Namespace: Atomic.Contexts
     DirectoryPath: Assets/_Game/Atomic/Codegen

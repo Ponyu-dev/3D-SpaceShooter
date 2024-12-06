@@ -23,6 +23,7 @@ namespace Atomic.Contexts
 		public const int TriggerSensor = 12; // Const<TriggerSensor>
 		public const int CanGamePlay = 14; // AndExpression
 		public const int IsGamePlay = 15; // ReactiveBool
+		public const int GameOverEvent = 16; // BaseEvent
 
 
 		///Extensions
@@ -187,5 +188,23 @@ namespace Atomic.Contexts
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static bool HasIsGamePlay(this IContext obj) => obj.HasValue(IsGamePlay);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static BaseEvent GetGameOverEvent(this IContext obj) => obj.ResolveValue<BaseEvent>(GameOverEvent);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static bool TryGetGameOverEvent(this IContext obj, out BaseEvent value) => obj.TryResolveValue(GameOverEvent, out value);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static bool AddGameOverEvent(this IContext obj, BaseEvent value) => obj.AddValue(GameOverEvent, value);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static bool DelGameOverEvent(this IContext obj) => obj.DelValue(GameOverEvent);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static void SetGameOverEvent(this IContext obj, BaseEvent value) => obj.SetValue(GameOverEvent, value);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static bool HasGameOverEvent(this IContext obj) => obj.HasValue(GameOverEvent);
     }
 }

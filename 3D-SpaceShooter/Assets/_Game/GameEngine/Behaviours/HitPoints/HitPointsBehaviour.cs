@@ -40,7 +40,7 @@ namespace _Game.GameEngine.Behaviours.HitPoints
             Debug.Log("[HitPointsBehaviour] OnTakeDamage");
 
             _hitPoint.Current -= damage;
-            
+
             if (_hitPoint.Current <= 0)
                 _isDead.Value = true;
         }
