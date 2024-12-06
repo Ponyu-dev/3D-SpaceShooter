@@ -4,20 +4,18 @@
 // <file>: CollisionSensorBehaviour.cs
 // ------------------------------------------------------------------------------
 
-using Atomic.Elements;
 using Atomic.Entities;
 using UnityEngine;
 
 namespace _Game.GameEngine.Behaviours.Physics
 {
+    //TriggerSensorBehaviour
     public sealed class CollisionSensorBehaviour : IEntityInit, IEntityEnable, IEntityDisable
     {
         private IEntity _entity;
-        private IReactiveValue<int> _damage;
         
         public void Init(IEntity entity)
         {
-            _damage = entity.GetDamage();
             _entity = entity;
         }
 
@@ -33,11 +31,15 @@ namespace _Game.GameEngine.Behaviours.Physics
             
             if (entity.HasAsteroidTag() && _entity.HasAsteroidTag())
                 return;
+            
+            if (entity.HasBulletTag() && _entity.HasBulletTag())
+                return;
 
             if (!entity.TryGetTakeDamageEvent(out var damageEvent))
                 return;
             
-            damageEvent.Invoke(_damage.Value);
+            if (_entity.TryGetDamage(out var damage))
+                damageEvent.Invoke(damage.Value);
             
             _entity.GetDespawnEvent().Invoke(_entity);
         }

@@ -4,6 +4,7 @@
 // <file>: WeaponShootToForwardBehavior.cs
 // ------------------------------------------------------------------------------
 
+using _Game.Gameplay.Bullets.Scripts;
 using _Game.Gameplay.GameContext;
 using Atomic.Contexts;
 using Atomic.Elements;
@@ -15,48 +16,43 @@ namespace _Game.GameEngine.Behaviours.Weapons.ShootToForward
 {
     public sealed class WeaponShootToForwardBehavior : IEntityInit, IEntityEnable, IEntityDisable
     {
-        private BaseEvent _actionShoot;
+        private BaseEvent _eventShoot;
         private Const<Transform> _worldTransform;
-        private Const<Transform> _weaponFirePoints;
+        private Const<Transform> _weaponFirePoint;
 
-        //private BulletEntityInstaller _weaponBulletPrefab;
+        private BulletEntityInstaller _weaponBulletPrefab;
         private ReactiveVector3 _weaponDirectionTarget;
         private Const<float> _weaponDefaultBulletSpeed;
         private Const<int> _weaponDefaultBulletDamage;
 
-        private bool _isPlayerTag;
-
         public void Init(IEntity entity)
         {
-            _isPlayerTag = entity.HasPlayerTag();
-            
-            _actionShoot = entity.GetActionShoot();
+            _eventShoot = entity.GetActionShoot();
             _worldTransform = SingletonGameContext.Instance.GetWorldTransform();
-            _weaponFirePoints = entity.GetWeaponFirePoint();
+            _weaponFirePoint = entity.GetWeaponFirePoint();
             _weaponDirectionTarget = entity.GetWeaponDirectionTarget();
             _weaponDefaultBulletSpeed = entity.GetWeaponDefaultBulletSpeed();
             _weaponDefaultBulletDamage = entity.GetWeaponDefaultBulletDamage();
-            //_weaponBulletPrefab = entity.GetWeaponBulletPrefab();
+            _weaponBulletPrefab = entity.GetWeaponBulletPrefab();
         }
 
         public void Enable(IEntity entity)
         {
-            _actionShoot.Subscribe(OnShoot);
+            _eventShoot.Subscribe(OnShoot);
         }
 
         private void OnShoot()
         {
-            /*var transformPosition = _weaponFirePoints.Value[0];
-            var bullet = NightPool.Spawn(_weaponBulletPrefab, transformPosition.position, Quaternion.identity, _worldTransform.Value);
-            bullet.AddTag(_isPlayerTag);
+            var bullet = NightPool.Spawn(_weaponBulletPrefab, _weaponFirePoint.Value.position, Quaternion.identity, _worldTransform.Value);
+            
             bullet.InitTransformBehaviour();
             bullet.InitMovementBehaviour(_weaponDefaultBulletSpeed.Value, _weaponDirectionTarget.Value);
-            bullet.InitDamage(_weaponDefaultBulletDamage.Value);*/
+            bullet.InitDamage(_weaponDefaultBulletDamage.Value);
         }
 
         public void Disable(IEntity entity)
         {
-            _actionShoot.Unsubscribe(OnShoot);
+            _eventShoot.Unsubscribe(OnShoot);
         }
     }
 }

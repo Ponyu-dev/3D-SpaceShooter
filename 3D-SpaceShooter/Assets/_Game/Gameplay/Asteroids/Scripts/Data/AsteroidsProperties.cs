@@ -62,9 +62,8 @@ namespace _Game.Gameplay.Asteroids.Scripts.Data
         {
             if (!_transformToIndexMap.TryGetValue(transform, out var index))
                 throw new ArgumentException("Transform не найден.");
-            
-            NightPool.Despawn(transformAccessArray[index].gameObject);
-            
+
+            var despawn = transformAccessArray[index].gameObject;
             // Удаляем Transform из TransformAccessArray
             transformAccessArray.RemoveAtSwapBack(index);
 
@@ -84,6 +83,8 @@ namespace _Game.Gameplay.Asteroids.Scripts.Data
             asteroidData = newAsteroidData;
             
             _transformToIndexMap.Remove(transform);
+            
+            NightPool.Despawn(despawn);
         }
 
         public void Dispose()

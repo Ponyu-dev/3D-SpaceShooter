@@ -17,9 +17,9 @@ namespace _Game.Gameplay.Asteroids.Scripts.Installers
     public sealed class AsteroidEntityInstaller : SceneEntityInstallerBase
     {
         [SerializeField] private BaseEvent<IEntity> despawnEvent;
-        [SerializeField] private CollisionSensorBehaviourInstaller collisionSensorBehaviourInstaller;
         [SerializeField] private ReactiveInt damage;
         [SerializeField] private HitPointsBehaviourInstaller hitPointsBehaviourInstaller;
+        [SerializeField] private TriggerSensorBehaviourInstaller triggerSensorBehaviourInstaller;
         
         public override void Install(IEntity entity)
         {
@@ -28,17 +28,18 @@ namespace _Game.Gameplay.Asteroids.Scripts.Installers
             entity.AddDamage(damage);
             entity.AddDespawnEvent(despawnEvent);
             entity.AddPosition(new ReactiveVector3(Vector3.zero));
-            collisionSensorBehaviourInstaller.Install(entity);
             hitPointsBehaviourInstaller.Install(entity);
+            triggerSensorBehaviourInstaller.Install(entity);
             _entity = entity;
         }
 
         private IEntity _entity;
         private void OnDrawGizmos()
         {
+            if (_entity is null || !_entity.HasPosition())
+                return;
             Gizmos.color = Color.magenta;
             Gizmos.DrawSphere(_entity.GetPosition().Value, 1f);
-            
             Gizmos.DrawLine(transform.position, _entity.GetPosition().Value);
         }
     }
