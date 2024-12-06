@@ -26,7 +26,6 @@ namespace _Game.Gameplay.Bullets.Scripts
         public override void Install(IEntity entity)
         {
             _entity = entity;
-            _entity.AddBulletTag();
             despawnBehaviourInstaller.Install(_entity);
             triggerSensorBehaviourInstaller.Install(_entity);
             entity.AddBehaviour<GameOverSystem>();
@@ -50,6 +49,7 @@ namespace _Game.Gameplay.Bullets.Scripts
 
         public void InitDamage(int bulletDamage)
         {
+            _entity.AddBulletTag();
             _entity.AddDamage(new ReactiveInt(bulletDamage));
         }
         
