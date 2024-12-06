@@ -44,6 +44,12 @@ MonoBehaviour:
     - id: 12
       name: TriggerSensor
       type: Const<TriggerSensor>
+    - id: 14
+      name: CanGamePlay
+      type: AndExpression
+    - id: 15
+      name: IsGamePlay
+      type: ReactiveBool
   - Name: Player
     Namespace: Atomic.Contexts
     DirectoryPath: Assets/_Game/Atomic/Codegen

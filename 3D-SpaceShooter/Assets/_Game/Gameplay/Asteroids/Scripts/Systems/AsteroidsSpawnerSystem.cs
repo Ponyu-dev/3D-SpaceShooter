@@ -47,6 +47,9 @@ namespace _Game.Gameplay.Asteroids.Scripts
 
         private void Spawn()
         {
+            if (!_gameContext.GetCanGamePlay().Value)
+                return;
+            
             if (_countTest > 20)
                 return;
             

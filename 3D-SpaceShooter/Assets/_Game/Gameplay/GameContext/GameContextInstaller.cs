@@ -16,6 +16,9 @@ namespace _Game.Gameplay.GameContext
     {
         [SerializeField] private Transform worldTransform;
         [SerializeField] private Camera mainCamera;
+
+        [SerializeField] private ReactiveBool isGamePlay;
+        [SerializeField] private AndExpression canGamePlay;
         
         [SerializeField] private TouchInputSystemInstaller touchInputSystemInstaller;
         [SerializeField] private TriggerSensorSystemInstaller triggerSensorSystemInstaller;
@@ -25,6 +28,11 @@ namespace _Game.Gameplay.GameContext
             context.AddPlayerBounds(new ReactiveVariable<Bounds>());
             context.AddWorldTransform(new Const<Transform>(worldTransform));
             context.AddMainCamera(new Const<Camera>(mainCamera));
+
+            context.AddIsGamePlay(isGamePlay);
+            
+            canGamePlay.Append(() => isGamePlay.Value);
+            context.AddCanGamePlay(canGamePlay);
 
             touchInputSystemInstaller.Install(context);
             triggerSensorSystemInstaller.Install(context);

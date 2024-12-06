@@ -21,6 +21,8 @@ namespace Atomic.Contexts
 		public const int DeltaMove = 5; // ReactiveVector3
 		public const int PlayerBounds = 9; // ReactiveVariable<Bounds>
 		public const int TriggerSensor = 12; // Const<TriggerSensor>
+		public const int CanGamePlay = 14; // AndExpression
+		public const int IsGamePlay = 15; // ReactiveBool
 
 
 		///Extensions
@@ -149,5 +151,41 @@ namespace Atomic.Contexts
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static bool HasTriggerSensor(this IContext obj) => obj.HasValue(TriggerSensor);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static AndExpression GetCanGamePlay(this IContext obj) => obj.ResolveValue<AndExpression>(CanGamePlay);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static bool TryGetCanGamePlay(this IContext obj, out AndExpression value) => obj.TryResolveValue(CanGamePlay, out value);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static bool AddCanGamePlay(this IContext obj, AndExpression value) => obj.AddValue(CanGamePlay, value);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static bool DelCanGamePlay(this IContext obj) => obj.DelValue(CanGamePlay);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static void SetCanGamePlay(this IContext obj, AndExpression value) => obj.SetValue(CanGamePlay, value);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static bool HasCanGamePlay(this IContext obj) => obj.HasValue(CanGamePlay);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static ReactiveBool GetIsGamePlay(this IContext obj) => obj.ResolveValue<ReactiveBool>(IsGamePlay);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static bool TryGetIsGamePlay(this IContext obj, out ReactiveBool value) => obj.TryResolveValue(IsGamePlay, out value);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static bool AddIsGamePlay(this IContext obj, ReactiveBool value) => obj.AddValue(IsGamePlay, value);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static bool DelIsGamePlay(this IContext obj) => obj.DelValue(IsGamePlay);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static void SetIsGamePlay(this IContext obj, ReactiveBool value) => obj.SetValue(IsGamePlay, value);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static bool HasIsGamePlay(this IContext obj) => obj.HasValue(IsGamePlay);
     }
 }
