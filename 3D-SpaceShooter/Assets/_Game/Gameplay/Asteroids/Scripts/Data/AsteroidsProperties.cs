@@ -18,6 +18,7 @@ namespace _Game.Gameplay.Asteroids.Scripts.Data
     public sealed class AsteroidsProperties : IDisposable
     {
         private Dictionary<Transform, int> _transformToIndexMap = new();
+        public Dictionary<Transform, int> TransformToIndexMap => _transformToIndexMap;
         
         [SerializeField] private NativeArray<AsteroidData> asteroidData;
         public NativeArray<AsteroidData> NativeAsteroidData => asteroidData;

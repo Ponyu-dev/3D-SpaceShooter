@@ -48,6 +48,8 @@ namespace _Game.GameEngine.Behaviours.Weapons.ShootToForward
             bullet.InitTransformBehaviour();
             bullet.InitMovementBehaviour(_weaponDefaultBulletSpeed.Value, _weaponDirectionTarget.Value);
             bullet.InitDamage(_weaponDefaultBulletDamage.Value);
+            
+            NightPool.Despawn(bullet, 3f);
         }
 
         public void Disable(IEntity entity)

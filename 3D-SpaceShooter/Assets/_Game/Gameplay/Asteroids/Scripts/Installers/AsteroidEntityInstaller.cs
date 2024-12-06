@@ -5,6 +5,7 @@
 // ------------------------------------------------------------------------------
 
 using System;
+using _Game.GameEngine.Behaviours.Common;
 using _Game.GameEngine.Behaviours.HitPoints;
 using _Game.GameEngine.Behaviours.Physics;
 using Atomic.Elements;
@@ -30,6 +31,7 @@ namespace _Game.Gameplay.Asteroids.Scripts.Installers
             entity.AddPosition(new ReactiveVector3(Vector3.zero));
             hitPointsBehaviourInstaller.Install(entity);
             triggerSensorBehaviourInstaller.Install(entity);
+            entity.AddBehaviour<GameOverSystem>();
             _entity = entity;
         }
 

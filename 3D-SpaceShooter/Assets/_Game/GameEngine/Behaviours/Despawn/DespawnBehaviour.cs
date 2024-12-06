@@ -6,7 +6,6 @@
 
 using Atomic.Entities;
 using NTC.Pool;
-using UnityEngine;
 
 namespace _Game.GameEngine.Behaviours.Despawn
 {
@@ -19,8 +18,9 @@ namespace _Game.GameEngine.Behaviours.Despawn
 
         private void OnDespawn(IEntity entity)
         {
-            Debug.Log($"[DespawnBehaviour] OnDespawn {entity.Name}");
-            NightPool.Despawn(entity.GetTransform().Value.gameObject);
+            if (entity.TryGetTransform(out var transform) &&
+                transform.Value is not null)
+                NightPool.Despawn(transform.Value.gameObject);
         }
 
         public void Disable(IEntity entity)

@@ -5,7 +5,6 @@
 // ------------------------------------------------------------------------------
 
 using _Game.GameEngine.Input.Scripts;
-using _Game.Gameplay.Asteroids.Scripts;
 using _Game.Gameplay.GameContext.System.TriggerSensor;
 using Atomic.Contexts;
 using Atomic.Elements;
@@ -39,7 +38,6 @@ namespace _Game.Gameplay.GameContext
 
             touchInputSystemInstaller.Install(context);
             triggerSensorSystemInstaller.Install(context);
-            context.AddSystem<AsteroidsClearSystem>();
         }
     }
 }
