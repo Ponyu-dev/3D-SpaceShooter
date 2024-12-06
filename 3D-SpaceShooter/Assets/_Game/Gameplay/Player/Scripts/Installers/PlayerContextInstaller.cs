@@ -32,6 +32,7 @@ namespace _Game.Gameplay.Player.Scripts.Installers
             context.AddPlayerEntity(new Const<IEntity>(playerPrefab));
             context.AddSystem<PlayerMovementSystem>();
             context.AddSystem<GameOverTriggerSystem>();
+            context.AddSystem<PlayerRestartSystem>();
         }
 
         private void OnDrawGizmos()

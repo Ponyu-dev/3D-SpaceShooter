@@ -34,6 +34,7 @@ namespace _Game.Gameplay.GameCycle.Scripts
         {
             panelGameOver.SetActive(false);
             gameContext.GetIsGamePlay().Value = true;
+            gameContext.GetRestartEvent().Invoke();
         }
 
         public void Disable()

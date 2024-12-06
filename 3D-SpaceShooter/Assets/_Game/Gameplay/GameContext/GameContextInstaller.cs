@@ -20,6 +20,7 @@ namespace _Game.Gameplay.GameContext
         [SerializeField] private ReactiveBool isGamePlay;
         [SerializeField] private AndExpression canGamePlay;
         [SerializeField] private BaseEvent playerDeadEvent;
+        [SerializeField] private BaseEvent restartEvent;
         
         [SerializeField] private TouchInputSystemInstaller touchInputSystemInstaller;
         [SerializeField] private TriggerSensorSystemInstaller triggerSensorSystemInstaller;
@@ -32,6 +33,7 @@ namespace _Game.Gameplay.GameContext
 
             context.AddIsGamePlay(isGamePlay);
             context.AddGameOverEvent(playerDeadEvent);
+            context.AddRestartEvent(restartEvent);
             
             canGamePlay.Append(() => isGamePlay.Value);
             context.AddCanGamePlay(canGamePlay);

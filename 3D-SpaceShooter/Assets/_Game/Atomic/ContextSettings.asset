@@ -53,6 +53,9 @@ MonoBehaviour:
     - id: 16
       name: GameOverEvent
       type: BaseEvent
+    - id: 17
+      name: RestartEvent
+      type: BaseEvent
   - Name: Player
     Namespace: Atomic.Contexts
     DirectoryPath: Assets/_Game/Atomic/Codegen

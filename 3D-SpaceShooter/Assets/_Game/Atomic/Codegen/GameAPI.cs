@@ -24,6 +24,7 @@ namespace Atomic.Contexts
 		public const int CanGamePlay = 14; // AndExpression
 		public const int IsGamePlay = 15; // ReactiveBool
 		public const int GameOverEvent = 16; // BaseEvent
+		public const int RestartEvent = 17; // BaseEvent
 
 
 		///Extensions
@@ -206,5 +207,23 @@ namespace Atomic.Contexts
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static bool HasGameOverEvent(this IContext obj) => obj.HasValue(GameOverEvent);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static BaseEvent GetRestartEvent(this IContext obj) => obj.ResolveValue<BaseEvent>(RestartEvent);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static bool TryGetRestartEvent(this IContext obj, out BaseEvent value) => obj.TryResolveValue(RestartEvent, out value);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static bool AddRestartEvent(this IContext obj, BaseEvent value) => obj.AddValue(RestartEvent, value);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static bool DelRestartEvent(this IContext obj) => obj.DelValue(RestartEvent);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static void SetRestartEvent(this IContext obj, BaseEvent value) => obj.SetValue(RestartEvent, value);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static bool HasRestartEvent(this IContext obj) => obj.HasValue(RestartEvent);
     }
 }
