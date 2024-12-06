@@ -1035,10 +1035,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1441432355}
     m_Modifications:
-    - target: {fileID: 1015626482190949338, guid: 4c945b3229d0f4baab89952eb5229234, type: 3}
-      propertyPath: shootingTimerBehaviorInstaller.periodShoot.duration
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 4648171702229354305, guid: 4c945b3229d0f4baab89952eb5229234, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
