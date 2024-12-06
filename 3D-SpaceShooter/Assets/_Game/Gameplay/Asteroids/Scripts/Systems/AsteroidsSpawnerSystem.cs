@@ -47,6 +47,9 @@ namespace _Game.Gameplay.Asteroids.Scripts
 
         private void Spawn()
         {
+            if (!_gameContext.GetCanGamePlay().Value)
+                return;
+            
             if (_countTest > 20)
                 return;
             
@@ -71,7 +74,6 @@ namespace _Game.Gameplay.Asteroids.Scripts
 
         private void OnDespawnAsteroid(IEntity entity)
         {
-            Debug.Log($"[AsteroidsSpawnerSystem] OnDespawnAsteroid {entity.Name}");
             entity.GetDespawnEvent().Unsubscribe(OnDespawnAsteroid);
             _asteroidsProperties.Value.DespawnAsteroid(entity.GetTransform().Value);
             _countTest--;

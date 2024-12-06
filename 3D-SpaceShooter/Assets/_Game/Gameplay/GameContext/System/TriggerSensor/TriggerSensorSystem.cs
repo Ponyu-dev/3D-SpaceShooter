@@ -12,10 +12,12 @@ namespace _Game.Gameplay.GameContext.System.TriggerSensor
 {
     public sealed class TriggerSensorSystem : IContextInit, IContextEnable, IContextDisable
     {
-        private Elementary.TriggerSensor _triggerSensor; 
+        private Elementary.TriggerSensor _triggerSensor;
+        private IContext _context;
         
         public void Init(IContext context)
         {
+            _context = context;
             _triggerSensor = context.GetTriggerSensor().Value;
         }
 
@@ -28,6 +30,9 @@ namespace _Game.Gameplay.GameContext.System.TriggerSensor
 
         private void OnTriggerEntered(Collider collider)
         {
+            if (!_context.GetCanGamePlay().Value)
+                return;
+            
             if (collider.TryGetComponent<SceneEntity>(out var entity) &&
                 entity.TryGetDespawnEvent(out var despawnEvent))
             {

@@ -11,6 +11,8 @@ using _Game.GameEngine.Behaviours.Rotate.RotationTilt;
 using _Game.GameEngine.Behaviours.Shoot;
 using _Game.GameEngine.Behaviours.Visual;
 using _Game.GameEngine.Behaviours.Weapons.ShootToForward;
+using _Game.Gameplay.GameContext;
+using Atomic.Contexts;
 using Atomic.Elements;
 using Atomic.Entities;
 using UnityEngine;
@@ -38,12 +40,15 @@ namespace _Game.Gameplay.Player.Scripts.Installers
             
             movementBoundedBehaviourInstaller.Install(entity);
             movementBoundedBehaviourInstaller.CanMoveAppend(hitPointsBehaviourInstaller.IsNotDead());
+            movementBoundedBehaviourInstaller.CanMoveAppend(() => SingletonGameContext.Instance.GetIsGamePlay().Value);
             
             rotationTiltBehaviourInstaller.Install(entity);
             rotationTiltBehaviourInstaller.CanRotateAppend(hitPointsBehaviourInstaller.IsNotDead());
+            rotationTiltBehaviourInstaller.CanRotateAppend(() => SingletonGameContext.Instance.GetIsGamePlay().Value);
             
             shootingTimerBehaviorInstaller.Install(entity);
             shootingTimerBehaviorInstaller.CanShootAppend(hitPointsBehaviourInstaller.IsNotDead());
+            shootingTimerBehaviorInstaller.CanShootAppend(() => SingletonGameContext.Instance.GetIsGamePlay().Value);
             
             weaponShootToForwardBehaviorInstaller.Install(entity);
         }

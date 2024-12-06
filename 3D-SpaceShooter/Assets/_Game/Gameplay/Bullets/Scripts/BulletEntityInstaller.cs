@@ -4,6 +4,7 @@
 // <file>: BulletEntityInstaller.cs
 // ------------------------------------------------------------------------------
 
+using _Game.GameEngine.Behaviours.Common;
 using _Game.GameEngine.Behaviours.Despawn;
 using _Game.GameEngine.Behaviours.Move.Movement;
 using _Game.GameEngine.Behaviours.Physics;
@@ -28,6 +29,7 @@ namespace _Game.Gameplay.Bullets.Scripts
             _entity.AddBulletTag();
             despawnBehaviourInstaller.Install(_entity);
             triggerSensorBehaviourInstaller.Install(_entity);
+            entity.AddBehaviour<GameOverSystem>();
         }
 
         public void InitTransformBehaviour()

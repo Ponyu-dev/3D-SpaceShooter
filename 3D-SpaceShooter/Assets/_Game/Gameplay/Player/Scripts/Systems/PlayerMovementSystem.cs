@@ -29,7 +29,6 @@ namespace _Game.Gameplay.Player.Scripts.Systems
 
         public void Update(IContext context, float deltaTime)
         {
-            
             _playerMoveDirection.Value = _deltaMove.Value;
         }
     }

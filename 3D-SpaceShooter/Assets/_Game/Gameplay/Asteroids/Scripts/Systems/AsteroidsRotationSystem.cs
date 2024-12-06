@@ -24,6 +24,9 @@ namespace _Game.Gameplay.Asteroids.Scripts
 
         public void Update(IContext context, float deltaTime)
         {
+            if (!context.GetCanGamePlay().Value)
+                return;
+            
             var job = new RotateAsteroidsJob
             {
                 AsteroidDataArray = _asteroidsProperties.Value.NativeAsteroidData,
