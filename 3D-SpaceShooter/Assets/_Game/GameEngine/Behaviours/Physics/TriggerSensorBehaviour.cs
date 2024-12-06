@@ -4,6 +4,8 @@
 // <file>: TriggerSensorBehaviour.cs
 // ------------------------------------------------------------------------------
 
+using _Game.Gameplay.GameContext;
+using Atomic.Contexts;
 using Atomic.Entities;
 using Elementary;
 using UnityEngine;
@@ -53,11 +55,9 @@ namespace _Game.GameEngine.Behaviours.Physics
         private void OnTriggerBullet(SceneEntity entityTrigger)
         {
             Debug.Log("OnTriggerBullet with Asteroid");
-            // Нанести урон астероиду.
             entityTrigger.GetDespawnEvent().Invoke(entityTrigger);
-            //entityTrigger.GetTakeDamageEvent().Invoke(_entity.GetDamage().Value);
-            // Уничтожить пулю.
             _entity.GetDespawnEvent().Invoke(_entity);
+            SingletonGameContext.Instance.GetVictoryKillThreshold().Current += 1;
         }
 
         public void Disable(IEntity entity)

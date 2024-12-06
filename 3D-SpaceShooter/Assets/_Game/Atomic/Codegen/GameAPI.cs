@@ -23,8 +23,9 @@ namespace Atomic.Contexts
 		public const int TriggerSensor = 12; // Const<TriggerSensor>
 		public const int CanGamePlay = 14; // AndExpression
 		public const int IsGamePlay = 15; // ReactiveBool
-		public const int GameOverEvent = 16; // BaseEvent
+		public const int GameOverEvent = 16; // BaseEvent<bool>
 		public const int RestartEvent = 17; // BaseEvent
+		public const int VictoryKillThreshold = 18; // IntVariableLimited
 
 
 		///Extensions
@@ -191,19 +192,19 @@ namespace Atomic.Contexts
 		public static bool HasIsGamePlay(this IContext obj) => obj.HasValue(IsGamePlay);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static BaseEvent GetGameOverEvent(this IContext obj) => obj.ResolveValue<BaseEvent>(GameOverEvent);
+		public static BaseEvent<bool> GetGameOverEvent(this IContext obj) => obj.ResolveValue<BaseEvent<bool>>(GameOverEvent);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static bool TryGetGameOverEvent(this IContext obj, out BaseEvent value) => obj.TryResolveValue(GameOverEvent, out value);
+		public static bool TryGetGameOverEvent(this IContext obj, out BaseEvent<bool> value) => obj.TryResolveValue(GameOverEvent, out value);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static bool AddGameOverEvent(this IContext obj, BaseEvent value) => obj.AddValue(GameOverEvent, value);
+		public static bool AddGameOverEvent(this IContext obj, BaseEvent<bool> value) => obj.AddValue(GameOverEvent, value);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static bool DelGameOverEvent(this IContext obj) => obj.DelValue(GameOverEvent);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static void SetGameOverEvent(this IContext obj, BaseEvent value) => obj.SetValue(GameOverEvent, value);
+		public static void SetGameOverEvent(this IContext obj, BaseEvent<bool> value) => obj.SetValue(GameOverEvent, value);
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static bool HasGameOverEvent(this IContext obj) => obj.HasValue(GameOverEvent);
@@ -225,5 +226,23 @@ namespace Atomic.Contexts
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static bool HasRestartEvent(this IContext obj) => obj.HasValue(RestartEvent);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static IntVariableLimited GetVictoryKillThreshold(this IContext obj) => obj.ResolveValue<IntVariableLimited>(VictoryKillThreshold);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static bool TryGetVictoryKillThreshold(this IContext obj, out IntVariableLimited value) => obj.TryResolveValue(VictoryKillThreshold, out value);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static bool AddVictoryKillThreshold(this IContext obj, IntVariableLimited value) => obj.AddValue(VictoryKillThreshold, value);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static bool DelVictoryKillThreshold(this IContext obj) => obj.DelValue(VictoryKillThreshold);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static void SetVictoryKillThreshold(this IContext obj, IntVariableLimited value) => obj.SetValue(VictoryKillThreshold, value);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static bool HasVictoryKillThreshold(this IContext obj) => obj.HasValue(VictoryKillThreshold);
     }
 }

@@ -52,10 +52,13 @@ MonoBehaviour:
       type: ReactiveBool
     - id: 16
       name: GameOverEvent
-      type: BaseEvent
+      type: BaseEvent<bool>
     - id: 17
       name: RestartEvent
       type: BaseEvent
+    - id: 18
+      name: VictoryKillThreshold
+      type: IntVariableLimited
   - Name: Player
     Namespace: Atomic.Contexts
     DirectoryPath: Assets/_Game/Atomic/Codegen

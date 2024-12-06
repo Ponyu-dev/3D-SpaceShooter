@@ -6,6 +6,7 @@
 
 using _Game.GameEngine.Input.Scripts;
 using _Game.Gameplay.GameContext.System.TriggerSensor;
+using _Game.Gameplay.GameContext.System.VictoryKillThreshold;
 using Atomic.Contexts;
 using Atomic.Elements;
 using UnityEngine;
@@ -19,11 +20,12 @@ namespace _Game.Gameplay.GameContext
 
         [SerializeField] private ReactiveBool isGamePlay;
         [SerializeField] private AndExpression canGamePlay;
-        [SerializeField] private BaseEvent playerDeadEvent;
+        [SerializeField] private BaseEvent<bool> playerDeadEvent;
         [SerializeField] private BaseEvent restartEvent;
         
         [SerializeField] private TouchInputSystemInstaller touchInputSystemInstaller;
         [SerializeField] private TriggerSensorSystemInstaller triggerSensorSystemInstaller;
+        [SerializeField] private VictoryKillThresholdSystemInstaller victoryKillThresholdSystemInstaller;
         
         public override void Install(IContext context)
         {
@@ -40,6 +42,7 @@ namespace _Game.Gameplay.GameContext
 
             touchInputSystemInstaller.Install(context);
             triggerSensorSystemInstaller.Install(context);
+            victoryKillThresholdSystemInstaller.Install(context);
         }
     }
 }

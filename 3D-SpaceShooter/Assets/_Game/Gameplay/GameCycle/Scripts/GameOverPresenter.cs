@@ -18,21 +18,27 @@ namespace _Game.Gameplay.GameCycle.Scripts
         [SerializeField] private SceneContext gameContext;
         [SerializeField] private Button btnRestart;
         [SerializeField] private GameObject panelGameOver;
-        
+        [SerializeField] private GameObject panelDied;
+        [SerializeField] private GameObject panelWinner;
+
         public void Enable()
         {
             gameContext.GetGameOverEvent().Subscribe(ShowGameOver);
             btnRestart.onClick.AddListener(RestartGame);
         }
 
-        public void ShowGameOver()
+        public void ShowGameOver(bool isVictory)
         {
             panelGameOver.SetActive(true);
+            panelDied.SetActive(!isVictory);
+            panelWinner.SetActive(isVictory);
         }
 
         private void RestartGame()
         {
             panelGameOver.SetActive(false);
+            panelDied.SetActive(false);
+            panelWinner.SetActive(false);
             gameContext.GetIsGamePlay().Value = true;
             gameContext.GetRestartEvent().Invoke();
         }
