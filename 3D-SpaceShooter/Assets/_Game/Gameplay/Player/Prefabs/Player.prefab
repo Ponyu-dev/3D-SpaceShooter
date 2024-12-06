@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6863418173159241937}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: FirePoint
   m_TagString: Untagged
   m_Icon: {fileID: 6519382022992737161, guid: 0000000000000000d000000000000000, type: 0}
@@ -44,7 +44,7 @@ GameObject:
   - component: {fileID: 2548982594770065083}
   - component: {fileID: 8320664713284242753}
   - component: {fileID: 1125028785982550398}
-  m_Layer: 5
+  m_Layer: 7
   m_Name: CanvasProgressBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -160,7 +160,7 @@ GameObject:
   - component: {fileID: 8124643695948572994}
   - component: {fileID: 5314726173598271152}
   - component: {fileID: 2539185268870986000}
-  m_Layer: 5
+  m_Layer: 7
   m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -299,7 +299,7 @@ GameObject:
   - component: {fileID: 1015626482190949338}
   - component: {fileID: 5764299016673507644}
   - component: {fileID: 897901496121168056}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -455,7 +455,7 @@ GameObject:
   - component: {fileID: 3044189713228360082}
   - component: {fileID: 6971121546200485316}
   - component: {fileID: 4910402675043775320}
-  m_Layer: 5
+  m_Layer: 7
   m_Name: ProgressBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -532,7 +532,7 @@ GameObject:
   - component: {fileID: 6102503702159789429}
   - component: {fileID: 3457807101188086906}
   - component: {fileID: 6328270530754863406}
-  m_Layer: 5
+  m_Layer: 7
   m_Name: Fill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -604,9 +604,21 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 4648171702229354305}
     m_Modifications:
+    - target: {fileID: 3419728052316697411, guid: 3cb173f3eb78e488fb5dd4551d61f459, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 4808271895375347383, guid: 3cb173f3eb78e488fb5dd4551d61f459, type: 3}
       propertyPath: m_Name
       value: Fighter31
+      objectReference: {fileID: 0}
+    - target: {fileID: 4808271895375347383, guid: 3cb173f3eb78e488fb5dd4551d61f459, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 5443189951770562176, guid: 3cb173f3eb78e488fb5dd4551d61f459, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 7855068773684182472, guid: 3cb173f3eb78e488fb5dd4551d61f459, type: 3}
       propertyPath: m_LocalPosition.x

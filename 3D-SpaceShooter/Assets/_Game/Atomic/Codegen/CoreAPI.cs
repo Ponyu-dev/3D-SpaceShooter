@@ -18,6 +18,7 @@ namespace Atomic.Entities
         public const int MainCamera = 8; // Const<Camera>
         public const int DespawnEvent = 17; // BaseEvent<IEntity>
         public const int CollisionSensor = 18; // Const<CollisionSensor>
+        public const int TriggerSensor = 28; // Const<TriggerSensor>
 
 
         ///Extensions
@@ -92,5 +93,23 @@ namespace Atomic.Entities
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static void SetCollisionSensor(this IEntity obj, Const<CollisionSensor> value) => obj.SetValue(CollisionSensor, value);
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static Const<TriggerSensor> GetTriggerSensor(this IEntity obj) => obj.GetValue<Const<TriggerSensor>>(TriggerSensor);
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static bool TryGetTriggerSensor(this IEntity obj, out Const<TriggerSensor> value) => obj.TryGetValue(TriggerSensor, out value);
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static bool AddTriggerSensor(this IEntity obj, Const<TriggerSensor> value) => obj.AddValue(TriggerSensor, value);
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static bool HasTriggerSensor(this IEntity obj) => obj.HasValue(TriggerSensor);
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static bool DelTriggerSensor(this IEntity obj) => obj.DelValue(TriggerSensor);
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static void SetTriggerSensor(this IEntity obj, Const<TriggerSensor> value) => obj.SetValue(TriggerSensor, value);
     }
 }

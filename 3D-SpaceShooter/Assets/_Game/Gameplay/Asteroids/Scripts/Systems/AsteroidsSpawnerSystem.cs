@@ -59,7 +59,7 @@ namespace _Game.Gameplay.Asteroids.Scripts
             
             if (go.TryGetComponent<SceneEntity>(out var entity))
             {
-                entity.GetDespawnEvent().Subscribe(OnTriggerEntered);
+                entity.GetDespawnEvent().Subscribe(OnDespawnAsteroid);
                 
                 if (entity.HasTransform())
                     entity.DelTransform();
@@ -69,9 +69,10 @@ namespace _Game.Gameplay.Asteroids.Scripts
             }
         }
 
-        private void OnTriggerEntered(IEntity entity)
+        private void OnDespawnAsteroid(IEntity entity)
         {
-            entity.GetDespawnEvent().Unsubscribe(OnTriggerEntered);
+            Debug.Log($"[AsteroidsSpawnerSystem] OnDespawnAsteroid {entity.Name}");
+            entity.GetDespawnEvent().Unsubscribe(OnDespawnAsteroid);
             _asteroidsProperties.Value.DespawnAsteroid(entity.GetTransform().Value);
             _countTest--;
         }

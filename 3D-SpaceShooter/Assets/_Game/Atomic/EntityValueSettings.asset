@@ -66,6 +66,9 @@ MonoBehaviour:
     - id: 18
       name: CollisionSensor
       type: Const<CollisionSensor>
+    - id: 28
+      name: TriggerSensor
+      type: Const<TriggerSensor>
   - name: HitPoints
     indexes:
     - id: 11

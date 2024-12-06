@@ -6,6 +6,7 @@
 
 using Atomic.Entities;
 using NTC.Pool;
+using UnityEngine;
 
 namespace _Game.GameEngine.Behaviours.Despawn
 {
@@ -13,17 +14,18 @@ namespace _Game.GameEngine.Behaviours.Despawn
     {
         public void Enable(IEntity entity)
         {
-            entity.GetDespawnEvent().Subscribe(OnBoundaryTriggerExited);
+            entity.GetDespawnEvent().Subscribe(OnDespawn);
         }
 
-        private void OnBoundaryTriggerExited(IEntity entity)
+        private void OnDespawn(IEntity entity)
         {
+            Debug.Log($"[DespawnBehaviour] OnDespawn {entity.Name}");
             NightPool.Despawn(entity.GetTransform().Value.gameObject);
         }
 
         public void Disable(IEntity entity)
         {
-            entity.GetDespawnEvent().Unsubscribe(OnBoundaryTriggerExited);
+            entity.GetDespawnEvent().Unsubscribe(OnDespawn);
         }
     }
 }

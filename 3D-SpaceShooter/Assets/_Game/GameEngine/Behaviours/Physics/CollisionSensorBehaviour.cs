@@ -4,12 +4,12 @@
 // <file>: CollisionSensorBehaviour.cs
 // ------------------------------------------------------------------------------
 
-using Atomic.Elements;
 using Atomic.Entities;
 using UnityEngine;
 
 namespace _Game.GameEngine.Behaviours.Physics
 {
+    //TriggerSensorBehaviour
     public sealed class CollisionSensorBehaviour : IEntityInit, IEntityEnable, IEntityDisable
     {
         private IEntity _entity;
@@ -42,9 +42,6 @@ namespace _Game.GameEngine.Behaviours.Physics
                 damageEvent.Invoke(damage.Value);
             
             _entity.GetDespawnEvent().Invoke(_entity);
-            
-            if (entity.HasBulletTag())
-                entity.GetDespawnEvent().Invoke(entity);
         }
 
         public void Disable(IEntity entity)

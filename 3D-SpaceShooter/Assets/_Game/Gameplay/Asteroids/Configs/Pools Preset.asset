@@ -16,13 +16,13 @@ MonoBehaviour:
   - _name: Asteroid1
     _enabled: 1
     _prefab: {fileID: 130102, guid: 04d0bf4be9447154188d86f6e3b8dce9, type: 3}
-    _behaviourOnCapacityReached: 2
+    _behaviourOnCapacityReached: 1
     _despawnType: 2
-    _callbacksType: 1
+    _callbacksType: 0
     _capacity: 10
     _preloadSize: 10
     _dontDestroyOnLoad: 0
-    _warnings: 1
+    _warnings: 0
   - _name: Bullet1
     _enabled: 1
     _prefab: {fileID: 8824048910571942141, guid: 8def6b6503df142f18fa0e0e3aed942f, type: 3}

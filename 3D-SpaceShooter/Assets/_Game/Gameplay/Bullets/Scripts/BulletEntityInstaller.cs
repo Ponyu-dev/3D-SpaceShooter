@@ -18,7 +18,7 @@ namespace _Game.Gameplay.Bullets.Scripts
     public sealed class BulletEntityInstaller : SceneEntityInstallerBase, IDespawnable
     {
         [SerializeField] private DespawnBehaviourInstaller despawnBehaviourInstaller;
-        [SerializeField] private CollisionSensorBehaviourInstaller collisionSensorBehaviourInstaller;
+        [SerializeField] private TriggerSensorBehaviourInstaller triggerSensorBehaviourInstaller;
         
         private IEntity _entity;
         
@@ -27,7 +27,7 @@ namespace _Game.Gameplay.Bullets.Scripts
             _entity = entity;
             _entity.AddBulletTag();
             despawnBehaviourInstaller.Install(_entity);
-            collisionSensorBehaviourInstaller.Install(_entity);
+            triggerSensorBehaviourInstaller.Install(_entity);
         }
 
         public void InitTransformBehaviour()
