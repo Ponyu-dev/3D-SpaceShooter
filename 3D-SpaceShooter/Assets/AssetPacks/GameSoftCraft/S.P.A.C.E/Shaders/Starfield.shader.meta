@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 049ce88035fc7eb479445909d1364ff2
+ShaderImporter:
+  externalObjects: {}
+  defaultTextures: []
+  nonModifiableTextures: []
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 299421
+  packageName: S.P.A.C.E - Procedural Sky
+  packageVersion: 1.0.1
+  assetPath: Assets/GameSoftCraft/S.P.A.C.E/Shaders/Starfield.shader
+  uploadId: 709225

@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: c29db8c772731c942a132cb17611aa0e
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 299421
+  packageName: S.P.A.C.E - Procedural Sky
+  packageVersion: 1.0.1
+  assetPath: Assets/GameSoftCraft/S.P.A.C.E/Scripts/Components/StarfieldMatManager.cs
+  uploadId: 709225

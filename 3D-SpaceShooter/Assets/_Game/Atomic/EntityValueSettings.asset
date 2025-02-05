@@ -1,0 +1,123 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44bae1cf0fb645f197e54e0bd53a7b2f, type: 3}
+  m_Name: EntityValueSettings
+  m_EditorClassIdentifier: 
+  local: 0
+  namespace: Atomic.Entities
+  directoryPath: Assets/_Game/Atomic/Codegen
+  suffix: API
+  imports:
+  - Atomic.Elements
+  - Elementary
+  - _Game.Gameplay.Bullets.Scripts
+  categories:
+  - name: Move
+    indexes:
+    - id: 1
+      name: MoveSpeed
+      type: ReactiveFloat
+    - id: 2
+      name: MoveDirection
+      type: ReactiveVector3
+    - id: 3
+      name: CanMove
+      type: AndExpression
+    - id: 4
+      name: Position
+      type: ReactiveVector3
+    - id: 6
+      name: MoveBounds
+      type: Const<Bounds>
+  - name: Rotate
+    indexes:
+    - id: 5
+      name: Rotation
+      type: ReactiveQuaternion
+    - id: 9
+      name: TiltAmount
+      type: Const<float>
+    - id: 10
+      name: TiltSmoothness
+      type: Const<float>
+    - id: 22
+      name: CanRotate
+      type: AndExpression
+  - name: Core
+    indexes:
+    - id: 7
+      name: Transform
+      type: Const<Transform>
+    - id: 8
+      name: MainCamera
+      type: Const<Camera>
+    - id: 17
+      name: DespawnEvent
+      type: BaseEvent<IEntity>
+    - id: 18
+      name: CollisionSensor
+      type: Const<CollisionSensor>
+    - id: 28
+      name: TriggerSensor
+      type: Const<TriggerSensor>
+  - name: HitPoints
+    indexes:
+    - id: 11
+      name: HitPoint
+      type: IntVariableLimited
+    - id: 13
+      name: CanTakeDamage
+      type: AndExpression
+    - id: 14
+      name: TakeDamageEvent
+      type: BaseEvent<int>
+    - id: 15
+      name: IsDead
+      type: ReactiveBool
+  - name: Asteroid
+    indexes:
+    - id: 16
+      name: AsteroidIndex
+      type: Const<int>
+  - name: Attack
+    indexes:
+    - id: 19
+      name: Damage
+      type: ReactiveInt
+  - name: Shoot
+    indexes:
+    - id: 12
+      name: PeriodShoot
+      type: Cycle
+    - id: 20
+      name: CanShoot
+      type: AndExpression
+    - id: 21
+      name: ActionShoot
+      type: BaseEvent
+  - name: Weapon
+    indexes:
+    - id: 23
+      name: WeaponFirePoint
+      type: Const<Transform>
+    - id: 24
+      name: WeaponDirectionTarget
+      type: ReactiveVector3
+    - id: 25
+      name: WeaponDefaultBulletSpeed
+      type: Const<float>
+    - id: 26
+      name: WeaponDefaultBulletDamage
+      type: Const<int>
+    - id: 27
+      name: WeaponBulletPrefab
+      type: BulletEntityInstaller
